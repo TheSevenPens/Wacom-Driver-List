@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wacom Driver List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+<div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">Wacom Driver List v0.01</h1>
+    <div class="mb-4 flex flex-wrap gap-4">
+        <div>
+            <label for="osFilter" class="block text-sm font-medium text-gray-700">Filter by OS</label>
+            <select id="osFilter" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <option value="all">All</option>
+            </select>
+        </div>
+        <div>
+            <label for="versionFilter" class="block text-sm font-medium text-gray-700">Filter by Version</label>
+            <input type="text" id="versionFilter" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="e.g., 6.3.46.2">
+        </div>
+        <div>
+            <label for="urlFilter" class="block text-sm font-medium text-gray-700">Restrict by download URL</label>
+            <select id="urlFilter" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <option value="all">Show All</option>
+                <option value="wacom">Show only Wacom downloads</option>
+                <option value="archive">Show only archive.org downloads</option>
+            </select>
+        </div>
+
+        <div class="flex items-center mt-4">
+            <input type="checkbox" id="noDownload" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="noDownload" class="ml-2 block text-sm text-gray-900">No Download</label>
+        </div>
+        <div class="flex items-center mt-4">
+            <input type="checkbox" id="noReleaseDate" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+            <label for="noReleaseDate" class="ml-2 block text-sm text-gray-900">No Release Date</label>
+        </div>
+        <div>
+            <label for="sortField" class="block text-sm font-medium text-gray-700">Sort By</label>
+            <select id="sortField" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <option value="version">Driver Version</option>
+                <option value="releaseDate">Release Date</option>
+            </select>
+        </div>
+        <div>
+            <label for="sortOrder" class="block text-sm font-medium text-gray-700">Sort Order</label>
+            <select id="sortOrder" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </div>
+        <div>
+            <button id="exportButton" class="mt-4 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Export JSON</button>
+        </div>
+    </div>
+    <table id="driversTable" class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+        <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Version</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">OS</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wacom Link</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Archive Link</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Release Notes Link</th>
+        </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200"></tbody>
+    </table>
+</div>
+
+<script>
+    let driversData = [];
+
+    // Fetch JSON data from file
+    fetch('../wacom-drivers.json')
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to load JSON file');
+            return response.json();
+        })
+        .then(data => {
+            driversData = data;
+            populateOSFilter();
+            renderTable();
+        })
+        .catch(error => {
+            console.error('Error loading JSON:', error);
+            document.querySelector('#driversTable tbody').innerHTML = '<tr><td colspan="7" class="px-6 py-4 text-center text-red-600">Error loading data</td></tr>';
+        });
+
+    // Populate OS Family filter
+    function populateOSFilter() {
+        const osFilter = document.getElementById('osFilter');
+        const osFamilies = [...new Set(driversData.map(driver => driver.OSFamily))];
+        osFamilies.forEach(os => {
+            const option = document.createElement('option');
+            option.value = os;
+            option.textContent = os;
+            osFilter.appendChild(option);
+        });
+    }
+
+    // Render table with filtered and sorted data
+    function renderTable() {
+        const tbody = document.querySelector('#driversTable tbody');
+        const osFilter = document.getElementById('osFilter').value;
+        const versionFilter = document.getElementById('versionFilter').value.toLowerCase();
+        const urlFilter = document.getElementById('urlFilter').value;
+        const noDownload = document.getElementById('noDownload').checked;
+        const noReleaseDate = document.getElementById('noReleaseDate').checked;
+        const sortField = document.getElementById('sortField').value;
+        const sortOrder = document.getElementById('sortOrder').value;
+
+        let filteredData = driversData.filter(driver => {
+            const matchesOS = osFilter === 'all' || driver.OSFamily === osFilter;
+            const matchesVersion = driver.DriverVersion.toLowerCase().includes(versionFilter);
+            const matchesURL = urlFilter === 'all' ||
+                (urlFilter === 'wacom' && driver.DriverURLWacom) ||
+                (urlFilter === 'archive' && driver.DriverURLArchiveDotOrg);
+            const matchesNoDownload = !noDownload || (!driver.DriverURLWacom && !driver.DriverURLArchiveDotOrg);
+            const matchesNoReleaseDate = !noReleaseDate || !driver.ReleaseDate;
+            return matchesOS && matchesVersion && matchesURL && matchesNoDownload && matchesNoReleaseDate;
+        });
+
+        // Sort data
+        filteredData.sort((a, b) => {
+            const multiplier = sortOrder === 'asc' ? 1 : -1;
+            if (sortField === 'version') {
+                return multiplier * a.DriverVersion.localeCompare(b.DriverVersion, undefined, { numeric: true });
+            } else {
+                if (!a.ReleaseDate && !b.ReleaseDate) return 0;
+                if (!a.ReleaseDate) return multiplier * 1;
+                if (!b.ReleaseDate) return multiplier * -1;
+                return multiplier * (new Date(a.ReleaseDate) - new Date(b.ReleaseDate));
+            }
+        });
+
+        tbody.innerHTML = '';
+        filteredData.forEach(driver => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${driver.DriverVersion}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${driver.DriverName}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${driver.OSFamily}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${driver.ReleaseDate || 'N/A'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" class="text-indigo-600 hover:text-indigo-900" target="_blank">Link</a>` : 'N/A'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" class="text-indigo-600 hover:text-indigo-900" target="_blank">Link</a>` : 'N/A'}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        ${driver.ReleaseNotesURL ? `<a href="${driver.ReleaseNotesURL}" class="text-indigo-600 hover:text-indigo-900" target="_blank">Link</a>` : 'N/A'}
+                    </td>
+                `;
+            tbody.appendChild(row);
+        });
+    }
+
+    // Export JSON file
+    function exportJSON() {
+        const jsonStr = JSON.stringify(driversData, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'wacom-drivers.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    // Event listeners for filters, sort controls, and export button
+    document.getElementById('osFilter').addEventListener('change', renderTable);
+    document.getElementById('versionFilter').addEventListener('input', renderTable);
+    document.getElementById('urlFilter').addEventListener('change', renderTable);
+    document.getElementById('noDownload').addEventListener('change', renderTable);
+    document.getElementById('noReleaseDate').addEventListener('change', renderTable);
+    document.getElementById('sortField').addEventListener('change', renderTable);
+    document.getElementById('sortOrder').addEventListener('change', renderTable);
+    document.getElementById('exportButton').addEventListener('click', exportJSON);
+</script>
+</body>
+</html>
