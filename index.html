@@ -37,7 +37,18 @@
             <label for="noReleaseDate" class="ml-2 block text-sm text-gray-900">No Release Date</label>
         </div>
         <div>
-            <button id="sortButton" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sort by Version</button>
+            <label for="sortField" class="block text-sm font-medium text-gray-700">Sort By</label>
+            <select id="sortField" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <option value="version">Driver Version</option>
+                <option value="releaseDate">Release Date</option>
+            </select>
+        </div>
+        <div>
+            <label for="sortOrder" class="block text-sm font-medium text-gray-700">Sort Order</label>
+            <select id="sortOrder" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
         </div>
     </div>
     <table id="driversTable" class="min-w-full divide-y divide-gray-200">
@@ -58,7 +69,6 @@
 
 <script>
     let driversData = [];
-    let sortByVersion = true;
 
     // Fetch JSON data from file
     fetch('wacom-drivers.json')
@@ -96,6 +106,8 @@
         const urlFilter = document.getElementById('urlFilter').value;
         const noDownload = document.getElementById('noDownload').checked;
         const noReleaseDate = document.getElementById('noReleaseDate').checked;
+        const sortField = document.getElementById('sortField').value;
+        const sortOrder = document.getElementById('sortOrder').value;
 
         let filteredData = driversData.filter(driver => {
             const matchesOS = osFilter === 'all' || driver.OSFamily === osFilter;
@@ -110,13 +122,14 @@
 
         // Sort data
         filteredData.sort((a, b) => {
-            if (sortByVersion) {
-                return a.DriverVersion.localeCompare(b.DriverVersion, undefined, { numeric: true });
+            const multiplier = sortOrder === 'asc' ? 1 : -1;
+            if (sortField === 'version') {
+                return multiplier * a.DriverVersion.localeCompare(b.DriverVersion, undefined, { numeric: true });
             } else {
                 if (!a.ReleaseDate && !b.ReleaseDate) return 0;
-                if (!a.ReleaseDate) return 1;
-                if (!b.ReleaseDate) return -1;
-                return new Date(a.ReleaseDate) - new Date(b.ReleaseDate);
+                if (!a.ReleaseDate) return multiplier * 1;
+                if (!b.ReleaseDate) return multiplier * -1;
+                return multiplier * (new Date(a.ReleaseDate) - new Date(b.ReleaseDate));
             }
         });
 
@@ -142,17 +155,14 @@
         });
     }
 
-    // Event listeners for filters and sort button
+    // Event listeners for filters and sort controls
     document.getElementById('osFilter').addEventListener('change', renderTable);
     document.getElementById('versionFilter').addEventListener('input', renderTable);
     document.getElementById('urlFilter').addEventListener('change', renderTable);
     document.getElementById('noDownload').addEventListener('change', renderTable);
     document.getElementById('noReleaseDate').addEventListener('change', renderTable);
-    document.getElementById('sortButton').addEventListener('click', () => {
-        sortByVersion = !sortByVersion;
-        document.getElementById('sortButton').textContent = sortByVersion ? 'Sort by Version' : 'Sort by Release Date';
-        renderTable();
-    });
+    document.getElementById('sortField').addEventListener('change', renderTable);
+    document.getElementById('sortOrder').addEventListener('change', renderTable);
 </script>
 </body>
 </html>
