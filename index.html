@@ -7,7 +7,7 @@
 </head>
 <body >
 <div >
-    <h1 >Wacom Driver List v.02</h1>
+    <h1 >Wacom Driver List v.03</h1>
     <div >
         <div>
             <label for="osFilter" >Filter by OS</label>
@@ -136,6 +136,7 @@
             }
         });
 
+        const  emptyval = "-";
         tbody.innerHTML = '';
         filteredData.forEach(driver => {
             const row = document.createElement('tr');
@@ -143,15 +144,15 @@
                     <td >${driver.DriverVersion}</td>
                     <td >${driver.DriverName}</td>
                     <td >${driver.OSFamily}</td>
-                    <td >${driver.ReleaseDate || 'N/A'}</td>
+                    <td >${driver.ReleaseDate || emptyval }</td>
                     <td >
-                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" target="_blank">Link</a>` : 'N/A'}
+                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" target="_blank">Link</a>` : emptyval }
                     </td>
                     <td >
-                        ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" target="_blank">Link</a>` : 'N/A'}
+                        ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" target="_blank">Link</a>` : emptyval }
                     </td>
                     <td >
-                        ${driver.ReleaseNotesURL ? `<a href="${driver.ReleaseNotesURL}"  target="_blank">Link</a>` : 'N/A'}
+                        ${driver.ReleaseNotesURL ? `<a href="${driver.ReleaseNotesURL}"  target="_blank">Link</a>` : emptyval }
                     </td>
                 `;
             tbody.appendChild(row);
