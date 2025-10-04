@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wacom Driver List</title>
+    <style>
+        html {
+            font-family: Arial, sans-serif;
+        }
+    </style>
 </head>
 <body >
 <div >
@@ -146,13 +151,13 @@
                     <td >${driver.OSFamily}</td>
                     <td >${driver.ReleaseDate || emptyval }</td>
                     <td >
-                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" target="_blank">Link</a>` : emptyval }
+                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" target="_blank">Driver (Wacom)</a>` : emptyval }
                     </td>
                     <td >
-                        ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" target="_blank">Link</a>` : emptyval }
+                        ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" target="_blank">Driver (Archive.org)</a>` : emptyval }
                     </td>
                     <td >
-                        ${driver.ReleaseNotesURL ? `<a href="${driver.ReleaseNotesURL}"  target="_blank">Link</a>` : emptyval }
+                        ${driver.ReleaseNotesURL ? `<a href="${driver.ReleaseNotesURL}"  target="_blank">RelNotes</a>` : emptyval }
                     </td>
                 `;
             tbody.appendChild(row);
