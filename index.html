@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wacom Driver List</title>
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 p-6">
-<div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-md">
-    <h1 class="text-2xl font-bold mb-4">Wacom Driver List v.001</h1>
-    <div class="mb-4 flex flex-wrap gap-4">
+<body >
+<div >
+    <h1 >Wacom Driver List v.02</h1>
+    <div >
         <div>
-            <label for="osFilter" class="block text-sm font-medium text-gray-700">Filter by OS</label>
-            <select id="osFilter" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <label for="osFilter" >Filter by OS</label>
+            <select id="osFilter">
                 <option value="all">All</option>
             </select>
         </div>
         <div>
             <label for="versionFilter" class="block text-sm font-medium text-gray-700">Filter by Version</label>
-            <input type="text" id="versionFilter" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="e.g., 6.3.46.2">
+            <input type="text" id="versionFilter" placeholder="e.g., 6.3.46.2">
         </div>
         <div>
-            <label for="urlFilter" class="block text-sm font-medium text-gray-700">Restrict by download URL</label>
-            <select id="urlFilter" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <label for="urlFilter" >Restrict by download URL</label>
+            <select id="urlFilter" >
                 <option value="all">Show All</option>
                 <option value="wacom">Show only Wacom downloads</option>
                 <option value="archive">Show only archive.org downloads</option>
@@ -30,44 +29,44 @@
         </div>
 
         <div class="flex items-center mt-4">
-            <input type="checkbox" id="noDownload" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-            <label for="noDownload" class="ml-2 block text-sm text-gray-900">No Download</label>
+            <input type="checkbox" id="noDownload" >
+            <label for="noDownload" >No Download</label>
         </div>
         <div class="flex items-center mt-4">
-            <input type="checkbox" id="noReleaseDate" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-            <label for="noReleaseDate" class="ml-2 block text-sm text-gray-900">No Release Date</label>
+            <input type="checkbox" id="noReleaseDate" >
+            <label for="noReleaseDate" >No Release Date</label>
         </div>
         <div>
-            <label for="sortField" class="block text-sm font-medium text-gray-700">Sort By</label>
-            <select id="sortField" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <label for="sortField" >Sort By</label>
+            <select id="sortField" >
                 <option value="version">Driver Version</option>
                 <option value="releaseDate">Release Date</option>
             </select>
         </div>
         <div>
-            <label for="sortOrder" class="block text-sm font-medium text-gray-700">Sort Order</label>
-            <select id="sortOrder" class="mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+            <label for="sortOrder" >Sort Order</label>
+            <select id="sortOrder" >
                 <option value="asc">Ascending</option>
                 <option value="desc">Descending</option>
             </select>
         </div>
         <div>
-            <button id="exportButton" class="mt-4 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Export JSON</button>
+            <button id="exportButton" >Export JSON</button>
         </div>
     </div>
-    <table id="driversTable" class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gray-50">
+    <table id="driversTable" >
+        <thead >
         <tr>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Version</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">OS</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wacom Link</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Archive Link</th>
-            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Release Notes Link</th>
+            <th >Version</th>
+            <th >Name</th>
+            <th >OS</th>
+            <th >Date</th>
+            <th >Wacom Link</th>
+            <th >Archive Link</th>
+            <th >Release Notes Link</th>
         </tr>
         </thead>
-        <tbody class="bg-white divide-y divide-gray-200"></tbody>
+        <tbody ></tbody>
     </table>
 </div>
 
@@ -87,7 +86,7 @@
         })
         .catch(error => {
             console.error('Error loading JSON:', error);
-            document.querySelector('#driversTable tbody').innerHTML = '<tr><td colspan="7" class="px-6 py-4 text-center text-red-600">Error loading data</td></tr>';
+            document.querySelector('#driversTable tbody').innerHTML = '<tr><td colspan="7" >Error loading data</td></tr>';
         });
 
     // Populate OS Family filter
@@ -141,18 +140,18 @@
         filteredData.forEach(driver => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${driver.DriverVersion}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${driver.DriverName}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${driver.OSFamily}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${driver.ReleaseDate || 'N/A'}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm">
-                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" class="text-indigo-600 hover:text-indigo-900" target="_blank">Link</a>` : 'N/A'}
+                    <td >${driver.DriverVersion}</td>
+                    <td >${driver.DriverName}</td>
+                    <td >${driver.OSFamily}</td>
+                    <td >${driver.ReleaseDate || 'N/A'}</td>
+                    <td >
+                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" target="_blank">Link</a>` : 'N/A'}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm">
-                        ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" class="text-indigo-600 hover:text-indigo-900" target="_blank">Link</a>` : 'N/A'}
+                    <td >
+                        ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" target="_blank">Link</a>` : 'N/A'}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm">
-                        ${driver.ReleaseNotesURL ? `<a href="${driver.ReleaseNotesURL}" class="text-indigo-600 hover:text-indigo-900" target="_blank">Link</a>` : 'N/A'}
+                    <td >
+                        ${driver.ReleaseNotesURL ? `<a href="${driver.ReleaseNotesURL}"  target="_blank">Link</a>` : 'N/A'}
                     </td>
                 `;
             tbody.appendChild(row);
