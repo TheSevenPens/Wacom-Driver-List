@@ -786,7 +786,7 @@
     "ReleaseDate": "2017-02-08",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.20-11.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.20.html",
     "DriverUID": "6.3.20-11_MacOSX"
   },
   {
@@ -816,7 +816,7 @@
     "ReleaseDate": "2017-01-19",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.20-8.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.20.html",
     "DriverUID": "6.3.20-8_MacOSX"
   },
   {
@@ -836,7 +836,7 @@
     "ReleaseDate": "2017-05-02",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.21-8.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.21.html",
     "DriverUID": "6.3.21-8_MacOSX"
   },
   {
@@ -846,7 +846,7 @@
     "ReleaseDate": "2017-05-24",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.22-3.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.22.html",
     "DriverUID": "6.3.22-3_MacOSX"
   },
   {
@@ -886,7 +886,7 @@
     "ReleaseDate": "2017-07-07",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.23-3.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.23.html",
     "DriverUID": "6.3.23-3_MacOSX"
   },
   {
@@ -906,7 +906,7 @@
     "ReleaseDate": "2017-09-04",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.24-1.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.24.html",
     "DriverUID": "6.3.24-1_MacOSX"
   },
   {
@@ -936,7 +936,7 @@
     "ReleaseDate": "2017-10-12",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.25-2.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.25.html",
     "DriverUID": "6.3.25-2_MacOSX"
   },
   {
@@ -966,7 +966,7 @@
     "ReleaseDate": "2017-12-20",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.27-2.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.27.html",
     "DriverUID": "6.3.27-2_MacOSX"
   },
   {
@@ -986,7 +986,7 @@
     "ReleaseDate": "2018-02-23",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.28-2.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.28.html",
     "DriverUID": "6.3.28-2_MacOSX"
   },
   {
@@ -1026,7 +1026,7 @@
     "ReleaseDate": "2018-03-16",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.29-6.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.29.html",
     "DriverUID": "6.3.29-6_MacOSX"
   },
   {
@@ -1066,7 +1066,7 @@
     "ReleaseDate": "2018-06-11",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.30-2.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.30.html",
     "DriverUID": "6.3.30-2_MacOSX"
   },
   {
@@ -1106,7 +1106,7 @@
     "ReleaseDate": "2018-09-26",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.31-4.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.31.html",
     "DriverUID": "6.3.31-4_MacOSX"
   },
   {
@@ -1116,7 +1116,7 @@
     "ReleaseDate": "2018-09-26",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/win/professional/6.3.31-4.exe",
     "DriverURLArchiveDotOrg": "https://archive.org/download/wacom-tablet-drivers-for-windows/WacomTablet_6.3.31-4.exe",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.31.html",
     "DriverUID": "6.3.31-4_Windows"
   },
   {
@@ -1126,7 +1126,7 @@
     "ReleaseDate": "2018-11-01",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.31-5.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.31.html",
     "DriverUID": "6.3.31-5_MacOSX"
   },
   {
@@ -1136,7 +1136,7 @@
     "ReleaseDate": "2018-11-15",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.31-6.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.31.html",
     "DriverUID": "6.3.31-6_MacOSX"
   },
   {
@@ -1146,7 +1146,7 @@
     "ReleaseDate": "2018-12-06",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.32-3.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.32.html",
     "DriverUID": "6.3.32-3_MacOSX"
   },
   {
@@ -1176,7 +1176,7 @@
     "ReleaseDate": "2019-01-18",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.32-4.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.32.html",
     "DriverUID": "6.3.32-4_MacOSX"
   },
   {
@@ -1196,7 +1196,7 @@
     "ReleaseDate": "2019-03-27",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.33-5.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.33.html",
     "DriverUID": "6.3.33-5_MacOSX"
   },
   {
@@ -1206,7 +1206,7 @@
     "ReleaseDate": "2019-05-17",
     "DriverURLWacom": "http://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.34-2.dmg",
     "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.34.html",
     "DriverUID": "6.3.34-2_MacOSX"
   },
   {
@@ -1227,6 +1227,16 @@
     "DriverURLWacom": "",
     "DriverURLArchiveDotOrg": "https://archive.org/download/wacom-tablet-drivers-for-windows/WacomTablet_6.3.35-3.exe",
     "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/releasenotes/windows_6.3.35.html",
+    "DriverUID": "6.3.35-3_Windows"
+  },
+    {
+    "DriverVersion": "6.3.35-2",
+    "DriverName": "Driver 6.3.35-3 for MacOSX",
+    "OSFamily": "MacOSX",
+    "ReleaseDate": "2019-06-20",
+    "DriverURLWacom": "",
+    "DriverURLArchiveDotOrg": "",
+    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.35.html",
     "DriverUID": "6.3.35-3_Windows"
   },
   {
