@@ -43,13 +43,19 @@ async function downloadFile(url: string, dest: string): Promise<void> {
 async function do_download(url:string,dest:string)
 {
     const fileName = path.basename(url);
-    console.log(`Downloading ${url} to ${dest}`);
+
     if (fs.existsSync(dest)) {
-        console.log(`File ${fileName} already exists. Skipping download.`);
+        //console.log(`File ${fileName} already exists. Skipping download.`);
     }
     else
     {
+        console.log(`Downloading ${url} to ${dest}`);
         await downloadFile(url, dest);
+
+        const stats = fs.statSync(dest);
+        //if (stats.isFile() && stats.size === 0) {
+        //    fs.unlinkSync(dest);
+        //}
         //console.log(`Finished downloading ${driverFileName}`);
         await sleep(3000); // Pause for 3 seconds
     }
@@ -72,6 +78,7 @@ async function processDrivers() {
 
         // Process each driver
         for (const driver of drivers) {
+            console.log(`Processing driver ${driver.DriverUID}`);
             try {
                 // Create folder for DriverUID
                 const driverDir = path.join(baseDir, driver.DriverUID);
@@ -92,6 +99,13 @@ async function processDrivers() {
                     const notesDest = path.join(driverDir, notesFileName);
                     do_download(driver.ReleaseNotesURL, notesDest);
                 }
+
+                if (driver.DriverURLArchiveDotOrg) {
+                    const driverFileName = path.basename(driver.DriverURLArchiveDotOrg);
+                    const driverDest = path.join(driverDir, driverFileName);
+                    do_download(driver.DriverURLArchiveDotOrg, driverDest);
+                }
+
             } catch (err) {
                 console.error(`Error processing driver ${driver.DriverUID}:`, err);
             }
