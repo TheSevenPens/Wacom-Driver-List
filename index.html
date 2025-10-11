@@ -8,38 +8,52 @@
         html {
             font-family: Arial, sans-serif;
         }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px; /* For better spacing */
+        }
     </style>
 </head>
 <body >
 <div >
-    <h1 >Wacom Driver List v.03</h1>
+    <h1>SevenPens Wacom Driver List v.04</h1>
+    <ul>
+        <li>
+            This is a list of all Wacom drivers I could find. I'm sure some are missing.
+        </li>
+    <li>Download links are to Wacom's site or to archive.org copies of those drivers.
+    </li>
+    <li>Some download links may be broken because Wacom deletes old versions of drivers.
+    </li>
+    </ul>
     <div >
         <div>
-            <label for="osFilter" >Filter by OS</label>
+            <label for="osFilter" >Only show drivers for  OS</label>
             <select id="osFilter">
                 <option value="all">All</option>
             </select>
         </div>
         <div>
-            <label for="versionFilter" class="block text-sm font-medium text-gray-700">Filter by Version</label>
+            <label for="versionFilter" class="block text-sm font-medium text-gray-700">Filter by driver version</label>
             <input type="text" id="versionFilter" placeholder="e.g., 6.3.46.2">
         </div>
         <div>
-            <label for="urlFilter" >Restrict by download URL</label>
+            <label for="urlFilter" >Only show downloads from</label>
             <select id="urlFilter" >
-                <option value="all">Show All</option>
-                <option value="wacom">Show only Wacom downloads</option>
-                <option value="archive">Show only archive.org downloads</option>
+                <option value="all">Everyone</option>
+                <option value="wacom">wacom.com</option>
+                <option value="archive">archive.org</option>
             </select>
         </div>
 
         <div class="flex items-center mt-4">
             <input type="checkbox" id="noDownload" >
-            <label for="noDownload" >No Download</label>
+            <label for="noDownload" >Only show drivers with no download links</label>
         </div>
         <div class="flex items-center mt-4">
             <input type="checkbox" id="noReleaseDate" >
-            <label for="noReleaseDate" >No Release Date</label>
+            <label for="noReleaseDate" >Only show drivers with missing release date</label>
         </div>
         <div>
             <label for="sortField" >Sort By</label>
@@ -151,7 +165,7 @@
                     <td >${driver.OSFamily}</td>
                     <td >${driver.ReleaseDate || emptyval }</td>
                     <td >
-                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" target="_blank">Driver (Wacom)</a>` : emptyval }
+                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" target="_blank">Driver (Wacom.com)</a>` : emptyval }
                     </td>
                     <td >
                         ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" target="_blank">Driver (Archive.org)</a>` : emptyval }
