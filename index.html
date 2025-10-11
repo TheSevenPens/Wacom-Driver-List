@@ -55,10 +55,6 @@
             </div>
 
             <div class="flex items-center mt-4">
-                <input type="checkbox" id="noDownload" checked>
-                <label for="noDownload" >Has download links</label>
-            </div>
-            <div class="flex items-center mt-4">
                 <input type="checkbox" id="hasReleaseDate" checked >
                 <label for="hasReleaseDate" >Has release date</label>
             </div>
@@ -154,7 +150,6 @@
         const osFilter = document.getElementById('osFilter').value;
         const versionFilter = document.getElementById('versionFilter').value.toLowerCase();
         const urlFilter = document.getElementById('urlFilter').value;
-        const noDownload = document.getElementById('noDownload').checked;
         const filter_has_ReleaseDate = document.getElementById('hasReleaseDate').checked;
         const sortField = document.getElementById('sortField').value;
         const sortOrder = document.getElementById('sortOrder').value;
@@ -165,10 +160,10 @@
             const matchesURL = urlFilter === 'all' ||
                 (urlFilter === 'wacom' && driver.DriverURLWacom) ||
                 (urlFilter === 'archive' && driver.DriverURLArchiveDotOrg);
-            const matchesNoDownload = !noDownload || (!driver.DriverURLWacom && !driver.DriverURLArchiveDotOrg);
-            const matchesHasDownload = !matchesNoDownload ;
+            const downloads_available = driver.DriverURLWacom || driver.DriverURLArchiveDotOrg;
+            //const matchesHasDownload = (filter_has_Download && downloads_available) || (!filter_has_Download);
             const matchesHasReleaseDate = (filter_has_ReleaseDate && driver.ReleaseDate) || (!filter_has_ReleaseDate)
-            return matchesOS && matchesVersion && matchesURL && matchesHasDownload && matchesHasReleaseDate;
+            return matchesOS && matchesVersion && matchesURL && matchesHasReleaseDate;
         });
 
         // Sort data
@@ -225,7 +220,7 @@
     document.getElementById('osFilter').addEventListener('change', renderTable);
     document.getElementById('versionFilter').addEventListener('input', renderTable);
     document.getElementById('urlFilter').addEventListener('change', renderTable);
-    document.getElementById('noDownload').addEventListener('change', renderTable);
+    //document.getElementById('noDownload').addEventListener('change', renderTable);
     document.getElementById('hasReleaseDate').addEventListener('change', renderTable);
     document.getElementById('sortField').addEventListener('change', renderTable);
     document.getElementById('sortOrder').addEventListener('change', renderTable);
