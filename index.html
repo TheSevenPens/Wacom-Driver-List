@@ -59,8 +59,8 @@
                 <label for="noDownload" >Has download links</label>
             </div>
             <div class="flex items-center mt-4">
-                <input type="checkbox" id="noReleaseDate" checked >
-                <label for="noReleaseDate" >Has release date</label>
+                <input type="checkbox" id="hasReleaseDate" checked >
+                <label for="hasReleaseDate" >Has release date</label>
             </div>
 
 
@@ -155,7 +155,7 @@
         const versionFilter = document.getElementById('versionFilter').value.toLowerCase();
         const urlFilter = document.getElementById('urlFilter').value;
         const noDownload = document.getElementById('noDownload').checked;
-        const noReleaseDate = document.getElementById('noReleaseDate').checked;
+        const filter_has_ReleaseDate = document.getElementById('hasReleaseDate').checked;
         const sortField = document.getElementById('sortField').value;
         const sortOrder = document.getElementById('sortOrder').value;
 
@@ -166,9 +166,8 @@
                 (urlFilter === 'wacom' && driver.DriverURLWacom) ||
                 (urlFilter === 'archive' && driver.DriverURLArchiveDotOrg);
             const matchesNoDownload = !noDownload || (!driver.DriverURLWacom && !driver.DriverURLArchiveDotOrg);
-            const matchesHasDownload = !matchesNoDownload;
-            const matchesNoReleaseDate = !noReleaseDate || !driver.ReleaseDate;
-            const matchesHasReleaseDate = !matchesNoReleaseDate;
+            const matchesHasDownload = !matchesNoDownload ;
+            const matchesHasReleaseDate = (filter_has_ReleaseDate && driver.ReleaseDate) || (!filter_has_ReleaseDate)
             return matchesOS && matchesVersion && matchesURL && matchesHasDownload && matchesHasReleaseDate;
         });
 
@@ -227,7 +226,7 @@
     document.getElementById('versionFilter').addEventListener('input', renderTable);
     document.getElementById('urlFilter').addEventListener('change', renderTable);
     document.getElementById('noDownload').addEventListener('change', renderTable);
-    document.getElementById('noReleaseDate').addEventListener('change', renderTable);
+    document.getElementById('hasReleaseDate').addEventListener('change', renderTable);
     document.getElementById('sortField').addEventListener('change', renderTable);
     document.getElementById('sortOrder').addEventListener('change', renderTable);
     document.getElementById('exportButton').addEventListener('click', exportJSON);
