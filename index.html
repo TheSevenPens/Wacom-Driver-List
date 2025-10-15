@@ -4,40 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SevenPens Wacom Driver List</title>
-    <style>
-        html {
-            font-size: 12px;
-            font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        }
-
-
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 8px; /* For better spacing */
-        }
-
-        table tr:nth-child(odd) {
-            background-color: #f2f2ff; /* Light grey */
-        }
-
-        /* Style for even-numbered rows */
-        table tr:nth-child(even) {
-            background-color: #f7fff7; /* White */
-        }
-        .container-flex {
-            display: flex; /* Makes the container a flex container */
-            justify-content: space-around; /* Distributes space between items */
-            align-items: flex-start; /* Aligns items to the start of the cross-axis */
-        }
-
-        .column-item {
-            flex: 1; /* Allows items to grow and shrink to fill available space */
-            padding: 10px;
-            border: 1px solid #ccc;
-            margin: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+>
 </head>
 <body >
 <div >
@@ -46,9 +14,10 @@
 
     <div class="container-flex">
         <div class="column-item">
-            <p>Only show driver entries meeting these critera:</p>
+            <p>FILTERS</p>
+            <hr/>
             <div>
-                <label for="osFilter" >For OS</label>
+                <label for="osFilter" > OS</label>
                 <select id="osFilter">
                     <option value="all">All</option>
                 </select>
@@ -58,7 +27,7 @@
                 <input type="text" id="versionFilter" placeholder="e.g., 6.3.46.2">
             </div>
             <div>
-                <label for="urlFilter" >Has downloads from</label>
+                <label for="urlFilter" >Download source</label>
                 <select id="urlFilter" >
                     <option value="all">wacom.com and archive.org</option>
                     <option value="wacom">wacom.com</option>
@@ -75,7 +44,8 @@
         </div>
         <div class="column-item">
 
-            <p>Sorting:</p>
+            <p>SORTING</p>
+            <hr/>
             <div>
                 <label for="sortField" >Sort by</label>
                 <select id="sortField" >
@@ -95,6 +65,8 @@
         </div>
         <div class="column-item">
 
+            <p>NOTES</p>
+            <hr/>
             <ul>
                 <li>
                     This is a list of all Wacom drivers I could find. I'm sure some are missing.
@@ -112,13 +84,13 @@
     <table id="driversTable" >
         <thead >
         <tr>
-            <th >Version</th>
-            <th >Name</th>
+            <th >VERSION</th>
+            <th >NAME</th>
             <th >OS</th>
-            <th >Date</th>
-            <th >Wacom.com Link</th>
-            <th >Archive.org Link</th>
-            <th >Release Notes Link</th>
+            <th >DATE</th>
+            <th >Wacom.com <br/> download</th>
+            <th >Archive.org <br/> download</th>
+            <th >Release Notes </th>
         </tr>
         </thead>
         <tbody ></tbody>
