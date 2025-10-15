@@ -9,10 +9,21 @@
             font-size: 12px;
             font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         }
+
+
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
             padding: 8px; /* For better spacing */
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #f2f2ff; /* Light grey */
+        }
+
+        /* Style for even-numbered rows */
+        table tr:nth-child(even) {
+            background-color: #f7fff7; /* White */
         }
         .container-flex {
             display: flex; /* Makes the container a flex container */
