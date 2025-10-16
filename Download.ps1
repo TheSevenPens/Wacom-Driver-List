@@ -44,10 +44,20 @@ foreach ($driver in $drivers) {
         }
 
 
+        Write-Host $driver.DriverName "------------------------"
+
+        $fileName = [System.IO.Path]::GetFileName($url)
+        $outputPath = Join-Path -Path $folderPath -ChildPath $fileName
+        $local_exists = Test-Path $outputPath
         $remote_exists = $false
 
-        # Test if the URL file exists
-        Write-Host $driver.DriverName "------------------------"
+
+        if ($local_exists)
+        { 
+            Write-Host "Already exists" $outputPath 
+            continue
+        }
+
         $request = [System.Net.WebRequest]::Create($url)
         $request.Method = "HEAD"  # Use HEAD to check existence without downloading
         try {
@@ -62,10 +72,6 @@ foreach ($driver in $drivers) {
 
         }
 
-        $fileName = [System.IO.Path]::GetFileName($url)
-        $outputPath = Join-Path -Path $folderPath -ChildPath $fileName
-
-        $local_exists = Test-Path $outputPath
 
         if ($remote_exists -and (-not $local_exists))
         {
