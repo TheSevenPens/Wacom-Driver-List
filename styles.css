@@ -24,6 +24,13 @@ table, th, td {
     padding: 6px; /* For better spacing */
 }
 
+button, input , select {
+    font-size: 12px;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe";
+}
+
+
+
 table tr:nth-child(odd) {
     background-color: #f2f2ff; /* Light grey */
 }
