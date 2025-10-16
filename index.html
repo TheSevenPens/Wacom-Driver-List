@@ -13,7 +13,7 @@
 
     <div class="container-flex">
         <div class="column-item">
-            <p>FILTERS</p>
+            <p class="sectioneheader">FILTERS</p>
             <hr/>
             <div>
                 <label for="osFilter" > OS</label>
@@ -43,7 +43,7 @@
         </div>
         <div class="column-item">
 
-            <p>SORTING</p>
+            <p class="sectioneheader">SORTING</p>
             <hr/>
             <div>
                 <label for="sortField" >Sort by</label>
@@ -64,7 +64,7 @@
         </div>
         <div class="column-item">
 
-            <p>NOTES</p>
+            <p class="sectioneheader">NOTES</p>
             <hr/>
             <ul>
                 <li> Some driver versions may be missing.
@@ -76,7 +76,7 @@
 
 
         <div class="column-item">
-            <p>MISC</p>
+            <p class="sectioneheader">MISC</p>
             <hr/>
             <a href="https://github.com/TheSevenPens/Wacom-Driver-List" target="_blank">Github</a>
             <br/>
@@ -90,13 +90,13 @@
     <table id="driversTable" >
         <thead >
         <tr>
-            <th >VERSION</th>
-            <th >NAME</th>
-            <th >OS</th>
-            <th >DATE</th>
-            <th >WACOM.COM <br/> DOWNLOAD</th>
-            <th >ARCHIVE.ORG <br/> DOWNLOAD</th>
-            <th >RELEASE NOTES </th>
+            <th class="tableheader">VERSION</th>
+            <th class="tableheader">NAME</th>
+            <th class="tableheader">OS</th>
+            <th class="tableheader">DATE</th>
+            <th class="tableheader">WACOM.COM <br/> DOWNLOAD</th>
+            <th class="tableheader">ARCHIVE.ORG <br/> DOWNLOAD</th>
+            <th class="tableheader">NOTES </th>
         </tr>
         </thead>
         <tbody ></tbody>
@@ -174,7 +174,7 @@
         filteredData.forEach(driver => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                    <td >${driver.DriverVersion}</td>
+                    <td class="versionvalue">${driver.DriverVersion}</td>
                     <td >${driver.DriverName}</td>
                     <td >${driver.OSFamily}</td>
                     <td >${driver.ReleaseDate || emptyval }</td>
