@@ -3,9 +3,14 @@
     [string]$RootFolder 
 )
 
+$ErrorActionPreference = "stop" 
+Set-StrictMode -Version 1
+
+
 Write-Host Will store downloads in $RootFolder
 # Load the JSON file
-$jsonPath = "C:\Users\seven\Documents\GitHub\Wacom-Driver-List\wacom-drivers.json"
+$jsonFolder = "C:\Users\seven\Documents\GitHub\Wacom-Driver-List"
+$jsonPath = Join-Path $jsonFolder "wacom-drivers.json"
 if (-not (Test-Path $jsonPath)) {
     Write-Error "JSON file not found at $jsonPath"
     exit 1
@@ -20,7 +25,8 @@ $drivers = Get-Content -Path $jsonPath | ConvertFrom-Json
 foreach ($driver in $drivers) {
 
     $driverUID = $driver.DriverUID
-    $folderPath = Join-Path $RootFolder $driverUID  # Folder name based on DriverUID
+    $folderPath = Join-Path $RootFolder "Downloads"
+    $folderPath = Join-Path $folderPath $driverUID  
     
     # Create folder if it doesn't exist
     if (-not (Test-Path $folderPath)) {
@@ -41,6 +47,7 @@ foreach ($driver in $drivers) {
         $remote_exists = $false
 
         # Test if the URL file exists
+        Write-Host $driver.DriverName "------------------------"
         $request = [System.Net.WebRequest]::Create($url)
         $request.Method = "HEAD"  # Use HEAD to check existence without downloading
         try {
@@ -50,7 +57,7 @@ foreach ($driver in $drivers) {
             $remote_exists = $true;
         }
         catch {
-            Write-Warning "URL does not exist for $url for $driverUID"
+            Write-host "404 for" $url
             Start-Sleep -Milliseconds 3000
 
         }
@@ -68,6 +75,10 @@ foreach ($driver in $drivers) {
         
             # Sleep for 300 milliseconds after each download
             Start-Sleep -Milliseconds 3000
+        }
+        else
+        {
+            Write-Host "Already exists" $outputPath
         }
 
 
