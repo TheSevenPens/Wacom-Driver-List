@@ -18,6 +18,11 @@ p {
     margin-bottom: 2px; /* Reduces space after h1 */
 }
 
+.control
+{
+    margin-bottom: 3px;
+}
+
 .sectioneheader
 {
     font-weight: bold ;

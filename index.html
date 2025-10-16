@@ -15,26 +15,26 @@
         <div class="column-item">
             <p class="sectioneheader">FILTERS</p>
             <hr/>
-            <div>
+            <div class="control">
                 <label for="osFilter" > OS</label>
                 <select id="osFilter">
                     <option value="all">All</option>
                 </select>
             </div>
-            <div>
-                <label for="versionFilter" class="block text-sm font-medium text-gray-700">Driver version</label>
+            <div class="control">
+                <label for="versionFilter" class="block text-sm font-medium text-gray-700">Version</label>
                 <input type="text" id="versionFilter" placeholder="e.g., 6.3.46.2">
             </div>
-            <div>
+            <div class="control">
                 <label for="urlFilter" >Download source</label>
                 <select id="urlFilter" >
-                    <option value="all">wacom.com and archive.org</option>
+                    <option value="all">Any</option>
                     <option value="wacom">wacom.com</option>
                     <option value="archive">archive.org</option>
                 </select>
             </div>
 
-            <div class="flex items-center mt-4">
+            <div class="control">
                 <input type="checkbox" id="hasReleaseDate" checked >
                 <label for="hasReleaseDate" >Has release date</label>
             </div>
@@ -45,14 +45,14 @@
 
             <p class="sectioneheader">SORTING</p>
             <hr/>
-            <div>
+            <div class="control">
                 <label for="sortField" >Sort by</label>
                 <select id="sortField" >
                     <option value="releaseDate">Release Date</option>
                     <option value="version">Driver Version</option>
                 </select>
             </div>
-            <div>
+            <div class="control">
                 <label for="sortOrder" >Sort order</label>
                 <select id="sortOrder" >
                     <option value="desc">Descending</option>
@@ -69,7 +69,7 @@
             <ul>
                 <li> Some driver versions may be missing.
                 </li>
-                <li>Wacom removes older drivers. Some links may not work.</li>
+                <li>Wacom removes downloads for drivers older than about 2021</li>
                 </li>
             </ul>
         </div>
@@ -78,10 +78,13 @@
         <div class="column-item">
             <p class="sectioneheader">MISC</p>
             <hr/>
+            <div class="column-item">
             <a href="https://github.com/TheSevenPens/Wacom-Driver-List" target="_blank">Github</a>
-            <br/>
-            <a href="https://docs.thesevenpens.com/drawtab/resources/sevenpens-wacom-driver-list" target="_blank">Docs</a>
-            <div>
+            </div>
+            <div class="column-item">
+                <a href="https://docs.thesevenpens.com/drawtab/resources/sevenpens-wacom-driver-list" target="_blank">Docs</a>
+            </div>
+            <div class="column-item">
                 <button id="exportButton" >Export JSON</button>
             </div>
         </div>
