@@ -1229,16 +1229,6 @@
     "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/releasenotes/windows_6.3.35.html",
     "DriverUID": "6.3.35-3_Windows"
   },
-    {
-    "DriverVersion": "6.3.35-2",
-    "DriverName": "Driver 6.3.35-3 for MacOSX",
-    "OSFamily": "MacOSX",
-    "ReleaseDate": "2019-06-20",
-    "DriverURLWacom": "",
-    "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/releasenotes/Mac_6.3.35.html",
-    "DriverUID": "6.3.35-3_Windows"
-  },
   {
     "DriverVersion": "6.3.36-1",
     "DriverName": "Driver 6.3.36-1 for Windows",
