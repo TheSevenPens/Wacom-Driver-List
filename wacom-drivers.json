@@ -4,17 +4,7 @@
     "DriverName": "Driver 4.78-2 for MacOS9",
     "OSFamily": "MacOS9",
     "ReleaseDate": "2003-12-10",
-    "DriverURLWacom": "https://cdn.wacom.com/U/drivers/mac/478/macclassic_pro/478_2.hqx",
-    "DriverURLArchiveDotOrg": "",
-    "ReleaseNotesURL": "",
-    "DriverUID": "4.78-2_MacOS9"
-  },
-  {
-    "DriverVersion": "4.78-2",
-    "DriverName": "Driver 4.78-2 for MacOS9",
-    "OSFamily": "MacOS9",
-    "ReleaseDate": "2003-12-10",
-    "DriverURLWacom": "https://cdn.wacom.com/U/drivers/mac/478/macclassic_pro/478_2.hqx",
+    "DriverURLWacom": "https://cdn.wacom.com/U/drivers/mac/478/macclassic_pro/Mac_478_2_EN.hqx",
     "DriverURLArchiveDotOrg": "",
     "ReleaseNotesURL": "",
     "DriverUID": "4.78-2_MacOS9"
