@@ -1,11 +1,8 @@
-﻿param(
-    [Parameter(Mandatory=$true)]
-    [string]$RootFolder 
-)
-
-$ErrorActionPreference = "stop" 
+﻿$ErrorActionPreference = "stop" 
 Set-StrictMode -Version 1
 
+$mydocs = [Environment]::GetFolderPath("MyDocuments")
+$RootFolder = Join-Path $mydocs "Wacom_Drivers"
 
 Write-Host Will store downloads in $RootFolder
 # Load the JSON file
@@ -21,6 +18,11 @@ if (-not (Test-Path $jsonPath)) {
 $drivers = Get-Content -Path $jsonPath | ConvertFrom-Json
 
 # Loop through each driver
+
+#$download_metadata_file = Join-Path $RootFolder "downloads.json"
+#$download_dic = Get-Content $download_metadata_file | ConvertFrom-Json -AsHashtable
+#$download_dic 
+#exit
 
 foreach ($driver in $drivers) {
 
