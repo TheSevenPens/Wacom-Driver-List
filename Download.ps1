@@ -19,11 +19,16 @@ $drivers = Get-Content -Path $jsonPath | ConvertFrom-Json
 
 # Loop through each driver
 
-#$download_metadata_file = Join-Path $RootFolder "downloads.json"
-#$download_dic = Get-Content $download_metadata_file | ConvertFrom-Json -AsHashtable
-#$download_dic 
-#exit
+$download_metadata_file = Join-Path $RootFolder "downloads.json"
+$download_dic = Get-Content $download_metadata_file | ConvertFrom-Json -AsHashtable
+$download_dic 
 
+
+
+$mode = "DOWNLOAD"
+#$mode = "UPDATEMETADATA"
+
+$processed_count = 0
 foreach ($driver in $drivers) {
 
     $driverUID = $driver.DriverUID
@@ -35,65 +40,100 @@ foreach ($driver in $drivers) {
         New-Item -ItemType Directory -Path $folderPath -Force | Out-Null
         Write-Host "Created folder: $folderPath"
     }
+    $timeout_head = 500
+    $timeout_download = 3000
+
+    $today_string = Get-Date -Format "yyyy-MM-dd";
 
     $urls = @($driver.DriverURLWacom, $driver.DriverURLArchiveDotOrg, $driver.ReleaseNotesURL)
-
     foreach ($url in $urls)
     {
+        Write-Host $driver.DriverName $url "------------------------"
         if ([string]::IsNullOrWhiteSpace($url)) 
         {
             continue
         }
-
-
-        Write-Host $driver.DriverName "------------------------"
 
         $fileName = [System.IO.Path]::GetFileName($url)
         $outputPath = Join-Path -Path $folderPath -ChildPath $fileName
         $local_exists = Test-Path $outputPath
         $remote_exists = $false
 
+        $url_in_cache = $download_dic.ContainsKey($url)
+        $url_entry = $null  
+        if ($url_in_cache -eq $true)
+        {
+            $url_entry = $download_dic[ $url ]
+        }
+        else 
+        {
+            $url_entry = $download_dic[$url] = [PSCustomObject]@{
+                Result = "UNKNOWN"
+                DateTested = "" }
+                $download_dic[ $url ] = $url_entry
+        }
+
+        if ($url_entry.Result -eq "UNKNOWN")
+        {
+
+            if ($mode -eq "UPDATEMETADATA")
+            {
+                Write-Host "XXX"
+                $request = [System.Net.WebRequest]::Create($url)
+            
+                $request.Method = "HEAD"  # Use HEAD to check existence without downloading
+                try {
+                    $response = $request.GetResponse()
+                    $response.Close()
+                    $remote_exists = $true;
+                    $url_entry.Result = "EXISTS"
+                }
+                catch {
+                    Write-host "404 for" $url
+                    Start-Sleep -Milliseconds $timeout_head
+                    $url_entry.Result = "DOESNOTEXIST"
+
+                }
+                $url_entry.DateTested = $today_string
+
+                $download_dic | ConvertTo-Json -Depth 3 | Out-File -FilePath $download_metadata_file -Encoding UTF8
+
+            }
+        }
+
 
         if ($local_exists)
         { 
-            Write-Host "Already exists" $outputPath 
             continue
         }
 
-        $request = [System.Net.WebRequest]::Create($url)
-        $request.Method = "HEAD"  # Use HEAD to check existence without downloading
-        try {
-
-            $response = $request.GetResponse()
-            $response.Close()
-            $remote_exists = $true;
-        }
-        catch {
-            Write-host "404 for" $url
-            Start-Sleep -Milliseconds 3000
-
-        }
-
-
-        if ($remote_exists -and (-not $local_exists))
+        if ($mode -eq "DOWNLOAD")
         {
-            #Download the file
-            Invoke-WebRequest -Uri $url -OutFile $outputPath -UseBasicParsing
-            Write-Host "Downloaded $fileName to $folderPath"
-        
-            # Sleep for 300 milliseconds after each download
-            Start-Sleep -Milliseconds 3000
+            if (($url_entry.Result -eq "EXISTS") -and (-not $local_exists))
+            {
+                #Download the file
+                Invoke-WebRequest -Uri $url -OutFile $outputPath -UseBasicParsing
+                Write-Host "Downloaded $fileName to $folderPath"
+            
+                # Sleep for 300 milliseconds after each download
+                Start-Sleep -Milliseconds $timeout_download
+            }
+            else
+            {
+                Write-Host "Already exists" $outputPath
+            }
         }
-        else
-        {
-            Write-Host "Already exists" $outputPath
-        }
-
-
-    }
 
 
 
-}
+    } # end url loop
 
+    $processed_count = $processed_count + 1
+
+  
+
+
+} # end driver loop
+Write-Host "Driver Entries" $drivers.Count
+Write-Host "Drivers Processed" $processed_count
 Write-Host "Script completed."
