@@ -655,7 +655,7 @@
     "OSFamily": "MACOS",
     "ReleaseDate": "2015-12-21",
     "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/mac/professional/6.3.15-3.dmg",
-    "DriverURLArchiveDotOrg": "",
+    "DriverURLArchiveDotOrg": "https://archive.org/download/wacom-tablet-drivers-for-windows/WacomTablet_6.3.15-3.exe",
     "ReleaseNotesURL": "",
     "DriverUID": "6.3.15-3_MACOS"
   },
@@ -664,7 +664,7 @@
     "DriverName": "Driver 6.3.15-3 for WINDOWS",
     "OSFamily": "WINDOWS",
     "ReleaseDate": "2016-01-27",
-    "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.15-3.exe",
+    "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/6.3.15-3.exe",
     "DriverURLArchiveDotOrg": "",
     "ReleaseNotesURL": "",
     "DriverUID": "6.3.15-3_WINDOWS"
