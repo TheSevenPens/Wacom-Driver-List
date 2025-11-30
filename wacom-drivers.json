@@ -644,7 +644,7 @@
     "DriverName": "Driver 6.3.15-2 for WINDOWS",
     "OSFamily": "WINDOWS",
     "ReleaseDate": "2015-12-21",
-    "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/6.3.15-2.exe",
+    "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.15-2.exe",
     "DriverURLArchiveDotOrg": "",
     "ReleaseNotesURL": "",
     "DriverUID": "6.3.15-2_WINDOWS"
