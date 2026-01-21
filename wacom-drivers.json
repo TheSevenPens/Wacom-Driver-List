@@ -1310,54 +1310,54 @@
     "DriverUID": "6.3.42-2_WINDOWS"
   },
   {
-    "DriverVersion": "6.3.44.1",
-    "DriverName": "Driver 6.3.44.1 for WINDOWS",
+    "DriverVersion": "6.3.44-1",
+    "DriverName": "Driver 6.3.44-1 for WINDOWS",
     "OSFamily": "WINDOWS",
     "ReleaseDate": "2021-08-03",
     "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.44-1.exe",
     "DriverURLArchiveDotOrg": "",
     "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/releasenotes/Windows_6.3.44.html",
-    "DriverUID": "6.3.44.1_WINDOWS"
+    "DriverUID": "6.3.44-1_WINDOWS"
   },
   {
-    "DriverVersion": "6.3.44.3",
-    "DriverName": "Driver 6.3.44.3 for WINDOWS",
+    "DriverVersion": "6.3.44-3",
+    "DriverName": "Driver 6.3.44-3 for WINDOWS",
     "OSFamily": "WINDOWS",
     "ReleaseDate": "2021-10-12",
     "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.44-3.exe",
     "DriverURLArchiveDotOrg": "",
     "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/releasenotes/Windows_6.3.44.html",
-    "DriverUID": "6.3.44.3_WINDOWS"
+    "DriverUID": "6.3.44-3_WINDOWS"
   },
   {
-    "DriverVersion": "6.3.45.1",
-    "DriverName": "Driver 6.3.45.1 for WINDOWS",
+    "DriverVersion": "6.3.45-1",
+    "DriverName": "Driver 6.3.45-1 for WINDOWS",
     "OSFamily": "WINDOWS",
     "ReleaseDate": "2021-12-16",
     "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.45-1.exe",
     "DriverURLArchiveDotOrg": "",
     "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/releasenotes/Windows_6.3.45.html",
-    "DriverUID": "6.3.45.1_WINDOWS"
+    "DriverUID": "6.3.45-1_WINDOWS"
   },
   {
-    "DriverVersion": "6.3.46.1",
-    "DriverName": "Driver 6.3.46.1 for WINDOWS",
+    "DriverVersion": "6.3.46-1",
+    "DriverName": "Driver 6.3.46-1 for WINDOWS",
     "OSFamily": "WINDOWS",
     "ReleaseDate": "2022-03-29",
     "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.46-1.exe",
     "DriverURLArchiveDotOrg": "",
     "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/releasenotes/Windows_6.3.46.html",
-    "DriverUID": "6.3.46.1_WINDOWS"
+    "DriverUID": "6.3.46-1_WINDOWS"
   },
   {
-    "DriverVersion": "6.3.46.2",
-    "DriverName": "Driver 6.3.46.2 for WINDOWS",
+    "DriverVersion": "6.3.46-2",
+    "DriverName": "Driver 6.3.46-2 for WINDOWS",
     "OSFamily": "WINDOWS",
     "ReleaseDate": "2022-08-23",
     "DriverURLWacom": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.3.46-2.exe",
     "DriverURLArchiveDotOrg": "",
     "ReleaseNotesURL": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/releasenotes/Windows_6.3.46.html",
-    "DriverUID": "6.3.46.2_WINDOWS"
+    "DriverUID": "6.3.46-2_WINDOWS"
   },
   {
     "DriverVersion": "6.3.5-3",
