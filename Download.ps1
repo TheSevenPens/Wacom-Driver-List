@@ -1,5 +1,9 @@
 ﻿param (
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory=$true, Position=0)]
+    [ValidateSet("DOWNLOAD", "UPDATEMETADATA")]
+    [string]$Mode,
+
+    [Parameter(Mandatory=$true, Position=1)]
     [string]$RootFolder
 )
 
@@ -45,11 +49,6 @@ if (Test-Path $download_metadata_file) {
         Write-Warning "Could not load existing downloads.json. Starting with empty cache."
     }
 } 
-
-
-
-$mode = "DOWNLOAD"
-#$mode = "UPDATEMETADATA"
 
 $processed_count = 0
 foreach ($driver in $drivers) {
@@ -100,7 +99,6 @@ foreach ($driver in $drivers) {
 
             if ($mode -eq "UPDATEMETADATA")
             {
-                Write-Host "XXX"
                 $request = [System.Net.WebRequest]::Create($url)
             
                 $request.Method = "HEAD"  # Use HEAD to check existence without downloading
