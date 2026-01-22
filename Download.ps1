@@ -1,12 +1,19 @@
-﻿$ErrorActionPreference = "stop" 
+﻿param (
+    [Parameter(Mandatory=$true)]
+    [string]$RootFolder
+)
+
+$ErrorActionPreference = "stop" 
 Set-StrictMode -Version 1
 
-$mydocs = [Environment]::GetFolderPath("MyDocuments")
-$RootFolder = Join-Path $mydocs "Wacom_Drivers"
+if (-not (Test-Path $RootFolder -PathType Container)) {
+    Write-Error "Root folder does not exist: $RootFolder"
+    exit 1
+}
 
 Write-Host Will store downloads in $RootFolder
 # Load the JSON file
-$jsonFolder = "C:\Users\seven\Documents\GitHub\Wacom-Driver-List"
+$jsonFolder = $PSScriptRoot
 $jsonPath = Join-Path $jsonFolder "wacom-drivers.json"
 if (-not (Test-Path $jsonPath)) {
     Write-Error "JSON file not found at $jsonPath"
@@ -20,8 +27,24 @@ $drivers = Get-Content -Path $jsonPath | ConvertFrom-Json
 # Loop through each driver
 
 $download_metadata_file = Join-Path $RootFolder "downloads.json"
-$download_dic = Get-Content $download_metadata_file | ConvertFrom-Json -AsHashtable
-$download_dic 
+$download_dic = @{}
+
+if (Test-Path $download_metadata_file) {
+    try {
+        $content = Get-Content $download_metadata_file -Raw
+        if (-not [string]::IsNullOrWhiteSpace($content)) {
+            $jsonObject = $content | ConvertFrom-Json
+            if ($jsonObject) {
+                foreach ($prop in $jsonObject.PSObject.Properties) {
+                    $download_dic[$prop.Name] = $prop.Value
+                }
+            }
+        }
+    }
+    catch {
+        Write-Warning "Could not load existing downloads.json. Starting with empty cache."
+    }
+} 
 
 
 
@@ -32,8 +55,7 @@ $processed_count = 0
 foreach ($driver in $drivers) {
 
     $driverUID = $driver.DriverUID
-    $folderPath = Join-Path $RootFolder "Downloads"
-    $folderPath = Join-Path $folderPath $driverUID  
+    $folderPath = Join-Path $RootFolder $driverUID  
     
     # Create folder if it doesn't exist
     if (-not (Test-Path $folderPath)) {
