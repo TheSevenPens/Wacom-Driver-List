@@ -1,6 +1,10 @@
 {
+  "scripts": {
+    "serve": "http-server . -p 8080 -c-1"
+  },
   "devDependencies": {
-    "@types/node": "^24.6.2"
+    "@types/node": "^24.6.2",
+    "http-server": "^14.1.1"
   },
   "dependencies": {
     "xlsx": "^0.18.5"

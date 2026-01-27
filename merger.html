@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Merger - Wacom Drivers</title>
+    <link rel="stylesheet" href="merger.css">
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>JSON Merger</h1>
+        <div>
+            <span style="color: var(--text-secondary); font-size: 0.9rem;">v1.0.0</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Step 1: Drop Files -->
+        <div id="uploadStep" class="drop-zones">
+            <div id="dropBase" class="drop-zone">
+                <h3>Base File</h3>
+                <p>wacom-drivers.json</p>
+                <div class="status">Waiting...</div>
+            </div>
+            <div id="dropChanges" class="drop-zone">
+                <h3>Changes File</h3>
+                <p>wacom_driver_additions.json</p>
+                <div class="status">Waiting...</div>
+            </div>
+        </div>
+
+        <!-- Step 2: Comparison & Merge -->
+        <div id="comparisonArea" class="hidden">
+            <div class="diff-header">
+                <h2>Merge Preview</h2>
+                <div class="stats" style="color: var(--text-secondary);">
+                    <span id="statNew">0 New</span> •
+                    <span id="statMod">0 Modified</span>
+                </div>
+            </div>
+
+            <div id="diffList" class="diff-list">
+                <!-- Diff items will be injected here -->
+            </div>
+        </div>
+    </main>
+
+    <div class="actions">
+        <div id="mergeControls" class="hidden" style="display: flex; gap: 1rem; align-items: center;">
+            <span id="selectionCount" style="color: var(--text-secondary); margin-right: 1rem;">0 selected</span>
+            <button id="btnExport" class="primary">Export Merged JSON</button>
+        </div>
+    </div>
+
+    <script src="merger.js"></script>
+</body>
+
+</html>

@@ -1,229 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SevenPens Wacom Driver List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body >
-<div >
-    <h1>SevenPens Wacom Driver List v1.0</h1>
+
+<body>
+    <div>
+        <h1>SevenPens Wacom Driver List v1.0</h1>
 
 
-    <div class="container-flex">
-        <div class="column-item">
-            <p class="sectioneheader">FILTERS</p>
-            <hr/>
-            <div class="control">
-                <label for="osFilter" > OS</label>
-                <select id="osFilter">
-                    <option value="all">All</option>
-                </select>
-            </div>
-            <div class="control">
-                <label for="versionFilter" class="block text-sm font-medium text-gray-700">Version</label>
-                <input type="text" id="versionFilter" placeholder="e.g., 6.3.46.2">
-            </div>
-            <div class="control">
-                <label for="urlFilter" >Download source</label>
-                <select id="urlFilter" >
-                    <option value="all">Any</option>
-                    <option value="wacom">wacom.com</option>
-                    <option value="archive">archive.org</option>
-                </select>
-            </div>
-
-            <div class="control">
-                <input type="checkbox" id="hasReleaseDate" checked >
-                <label for="hasReleaseDate" >Has release date</label>
-            </div>
-
-
-        </div>
-        <div class="column-item">
-
-            <p class="sectioneheader">SORTING</p>
-            <hr/>
-            <div class="control">
-                <label for="sortField" >Sort by</label>
-                <select id="sortField" >
-                    <option value="releaseDate">Release Date</option>
-                    <option value="version">Driver Version</option>
-                </select>
-            </div>
-            <div class="control">
-                <label for="sortOrder" >Sort order</label>
-                <select id="sortOrder" >
-                    <option value="desc">Descending</option>
-                    <option value="asc">Ascending</option>
-                </select>
-            </div>
-
-
-        </div>
-        <div class="column-item">
-
-            <p class="sectioneheader">NOTES</p>
-            <hr/>
-            <ul>
-                <li> Some driver versions may be missing.
-                </li>
-                <li>Wacom removes downloads for drivers older than about 2021</li>
-                </li>
-            </ul>
-        </div>
-
-
-        <div class="column-item">
-            <p class="sectioneheader">MISC</p>
-            <hr/>
+        <div class="container-flex">
             <div class="column-item">
-            <a href="https://github.com/TheSevenPens/Wacom-Driver-List" target="_blank">Github</a>
+                <p class="sectioneheader">FILTERS</p>
+                <hr />
+                <div class="control">
+                    <label for="osFilter"> OS</label>
+                    <select id="osFilter">
+                        <option value="all">All</option>
+                    </select>
+                </div>
+                <div class="control">
+                    <label for="versionFilter" class="block text-sm font-medium text-gray-700">Version</label>
+                    <input type="text" id="versionFilter" placeholder="e.g., 6.3.46.2">
+                </div>
+                <div class="control">
+                    <label for="urlFilter">Download source</label>
+                    <select id="urlFilter">
+                        <option value="all">Any</option>
+                        <option value="wacom">wacom.com</option>
+                        <option value="archive">archive.org</option>
+                    </select>
+                </div>
+
+                <div class="control">
+                    <input type="checkbox" id="hasReleaseDate" checked>
+                    <label for="hasReleaseDate">Has release date</label>
+                </div>
+
+
             </div>
             <div class="column-item">
-                <a href="https://docs.thesevenpens.com/drawtab/resources/sevenpens-wacom-driver-list" target="_blank">Docs</a>
-            </div>
 
+                <p class="sectioneheader">SORTING</p>
+                <hr />
+                <div class="control">
+                    <label for="sortField">Sort by</label>
+                    <select id="sortField">
+                        <option value="releaseDate">Release Date</option>
+                        <option value="version">Driver Version</option>
+                    </select>
+                </div>
+                <div class="control">
+                    <label for="sortOrder">Sort order</label>
+                    <select id="sortOrder">
+                        <option value="desc">Descending</option>
+                        <option value="asc">Ascending</option>
+                    </select>
+                </div>
+
+
+            </div>
             <div class="column-item">
-                <a href="https://archive.org/download/wacom-tablet-drivers-for-windows" target="_blank">Drivers at archive.org</a>
+
+                <p class="sectioneheader">NOTES</p>
+                <hr />
+                <ul>
+                    <li> Some driver versions may be missing.
+                    </li>
+                    <li>Wacom removes downloads for drivers older than about 2021</li>
+                    </li>
+                </ul>
             </div>
 
 
             <div class="column-item">
-                <button id="exportButton" >Export JSON</button>
-            </div>
-        </div>
+                <p class="sectioneheader">MISC</p>
+                <hr />
+                <div class="column-item">
+                    <a href="https://github.com/TheSevenPens/Wacom-Driver-List" target="_blank">Github</a>
+                </div>
+                <div class="column-item">
+                    <a href="https://docs.thesevenpens.com/drawtab/resources/sevenpens-wacom-driver-list"
+                        target="_blank">Docs</a>
+                </div>
 
+                <div class="column-item">
+                    <a href="https://archive.org/download/wacom-tablet-drivers-for-windows" target="_blank">Drivers at
+                        archive.org</a>
+                </div>
+
+
+                <div class="column-item">
+                    <button id="exportButton">Export JSON</button>
+                </div>
+            </div>
+
+        </div>
+        <table id="driversTable">
+            <thead>
+                <tr>
+                    <th class="tableheader">#</th>
+                    <th class="tableheader">VERSION</th>
+                    <th class="tableheader">NAME</th>
+                    <th class="tableheader">OS</th>
+                    <th class="tableheader">DATE</th>
+                    <th class="tableheader">WACOM.COM <br /> DOWNLOAD</th>
+                    <th class="tableheader">ARCHIVE.ORG <br /> DOWNLOAD</th>
+                    <th class="tableheader">NOTES </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
-    <table id="driversTable" >
-        <thead >
-        <tr>
-            <th class="tableheader">VERSION</th>
-            <th class="tableheader">NAME</th>
-            <th class="tableheader">OS</th>
-            <th class="tableheader">DATE</th>
-            <th class="tableheader">WACOM.COM <br/> DOWNLOAD</th>
-            <th class="tableheader">ARCHIVE.ORG <br/> DOWNLOAD</th>
-            <th class="tableheader">NOTES </th>
-        </tr>
-        </thead>
-        <tbody ></tbody>
-    </table>
-</div>
 
-<script>
-    let driversData = [];
+    <script>
+        let driversData = [];
 
-    // Fetch JSON data from file
-    fetch('wacom-drivers.json')
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to load JSON file');
-            return response.json();
-        })
-        .then(data => {
-            driversData = data;
-            populateOSFilter();
-            renderTable();
-        })
-        .catch(error => {
-            console.error('Error loading JSON:', error);
-            document.querySelector('#driversTable tbody').innerHTML = '<tr><td colspan="7" >Error loading data</td></tr>';
-        });
+        // Fetch JSON data from file
+        fetch('wacom-drivers.json')
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load JSON file');
+                return response.json();
+            })
+            .then(data => {
+                driversData = data;
+                populateOSFilter();
+                renderTable();
+            })
+            .catch(error => {
+                console.error('Error loading JSON:', error);
+                document.querySelector('#driversTable tbody').innerHTML = '<tr><td colspan="7" >Error loading data</td></tr>';
+            });
 
-    // Populate OS Family filter
-    function populateOSFilter() {
-        const osFilter = document.getElementById('osFilter');
-        const osFamilies = [...new Set(driversData.map(driver => driver.OSFamily))];
-        osFamilies.forEach(os => {
-            const option = document.createElement('option');
-            option.value = os;
-            option.textContent = os;
-            osFilter.appendChild(option);
-        });
-    }
+        // Populate OS Family filter
+        function populateOSFilter() {
+            const osFilter = document.getElementById('osFilter');
+            const osFamilies = [...new Set(driversData.map(driver => driver.OSFamily))];
+            osFamilies.forEach(os => {
+                const option = document.createElement('option');
+                option.value = os;
+                option.textContent = os;
+                osFilter.appendChild(option);
+            });
+        }
 
-    // Render table with filtered and sorted data
-    function renderTable() {
-        const tbody = document.querySelector('#driversTable tbody');
-        const osFilter = document.getElementById('osFilter').value;
-        const versionFilter = document.getElementById('versionFilter').value.toLowerCase();
-        const urlFilter = document.getElementById('urlFilter').value;
-        const filter_has_ReleaseDate = document.getElementById('hasReleaseDate').checked;
-        const sortField = document.getElementById('sortField').value;
-        const sortOrder = document.getElementById('sortOrder').value;
+        // Render table with filtered and sorted data
+        function renderTable() {
+            const tbody = document.querySelector('#driversTable tbody');
+            const osFilter = document.getElementById('osFilter').value;
+            const versionFilter = document.getElementById('versionFilter').value.toLowerCase();
+            const urlFilter = document.getElementById('urlFilter').value;
+            const filter_has_ReleaseDate = document.getElementById('hasReleaseDate').checked;
+            const sortField = document.getElementById('sortField').value;
+            const sortOrder = document.getElementById('sortOrder').value;
 
-        let filteredData = driversData.filter(driver => {
-            const matchesOS = osFilter === 'all' || driver.OSFamily === osFilter;
-            const matchesVersion = driver.DriverVersion.toLowerCase().includes(versionFilter);
-            const matchesURL = urlFilter === 'all' ||
-                (urlFilter === 'wacom' && driver.DriverURLWacom) ||
-                (urlFilter === 'archive' && driver.DriverURLArchiveDotOrg);
-            const downloads_available = driver.DriverURLWacom || driver.DriverURLArchiveDotOrg;
-            //const matchesHasDownload = (filter_has_Download && downloads_available) || (!filter_has_Download);
-            const matchesHasReleaseDate = (filter_has_ReleaseDate && driver.ReleaseDate) || (!filter_has_ReleaseDate)
-            return matchesOS && matchesVersion && matchesURL && matchesHasReleaseDate;
-        });
+            let filteredData = driversData.filter(driver => {
+                const matchesOS = osFilter === 'all' || driver.OSFamily === osFilter;
+                const matchesVersion = driver.DriverVersion.toLowerCase().includes(versionFilter);
+                const matchesURL = urlFilter === 'all' ||
+                    (urlFilter === 'wacom' && driver.DriverURLWacom) ||
+                    (urlFilter === 'archive' && driver.DriverURLArchiveDotOrg);
+                const downloads_available = driver.DriverURLWacom || driver.DriverURLArchiveDotOrg;
+                //const matchesHasDownload = (filter_has_Download && downloads_available) || (!filter_has_Download);
+                const matchesHasReleaseDate = (filter_has_ReleaseDate && driver.ReleaseDate) || (!filter_has_ReleaseDate)
+                return matchesOS && matchesVersion && matchesURL && matchesHasReleaseDate;
+            });
 
-        // Sort data
-        filteredData.sort((a, b) => {
-            const multiplier = sortOrder === 'asc' ? 1 : -1;
-            if (sortField === 'version') {
-                return multiplier * a.DriverVersion.localeCompare(b.DriverVersion, undefined, { numeric: true });
-            } else {
-                if (!a.ReleaseDate && !b.ReleaseDate) return 0;
-                if (!a.ReleaseDate) return multiplier * 1;
-                if (!b.ReleaseDate) return multiplier * -1;
-                return multiplier * (new Date(a.ReleaseDate) - new Date(b.ReleaseDate));
-            }
-        });
+            // Sort data
+            filteredData.sort((a, b) => {
+                const multiplier = sortOrder === 'asc' ? 1 : -1;
+                if (sortField === 'version') {
+                    return multiplier * a.DriverVersion.localeCompare(b.DriverVersion, undefined, { numeric: true });
+                } else {
+                    if (!a.ReleaseDate && !b.ReleaseDate) return 0;
+                    if (!a.ReleaseDate) return multiplier * 1;
+                    if (!b.ReleaseDate) return multiplier * -1;
+                    return multiplier * (new Date(a.ReleaseDate) - new Date(b.ReleaseDate));
+                }
+            });
 
-        const  emptyval = "-";
-        tbody.innerHTML = '';
-        filteredData.forEach(driver => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
+            const emptyval = "-";
+            tbody.innerHTML = '';
+            filteredData.forEach((driver, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="versionvalue">${index + 1}</td>
                     <td class="versionvalue">${driver.DriverVersion}</td>
                     <td >${driver.DriverName}</td>
                     <td >${driver.OSFamily}</td>
-                    <td >${driver.ReleaseDate || emptyval }</td>
+                    <td >${driver.ReleaseDate || emptyval}</td>
                     <td >
-                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" target="_blank">Driver (Wacom.com)</a>` : emptyval }
+                        ${driver.DriverURLWacom ? `<a href="${driver.DriverURLWacom}" target="_blank">Driver (Wacom.com)</a>` : emptyval}
                     </td>
                     <td >
-                        ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" target="_blank">Driver (Archive.org)</a>` : emptyval }
+                        ${driver.DriverURLArchiveDotOrg ? `<a href="${driver.DriverURLArchiveDotOrg}" target="_blank">Driver (Archive.org)</a>` : emptyval}
                     </td>
                     <td >
-                        ${driver.ReleaseNotesURL ? `<a href="${driver.ReleaseNotesURL}"  target="_blank">RelNotes</a>` : emptyval }
+                        ${driver.ReleaseNotesURL ? `<a href="${driver.ReleaseNotesURL}"  target="_blank">RelNotes</a>` : emptyval}
                     </td>
                 `;
-            tbody.appendChild(row);
-        });
-    }
+                tbody.appendChild(row);
+            });
+        }
 
-    // Export JSON file
-    function exportJSON() {
-        const jsonStr = JSON.stringify(driversData, null, 2);
-        const blob = new Blob([jsonStr], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'wacom-drivers.json';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    }
+        // Export JSON file
+        function exportJSON() {
+            const jsonStr = JSON.stringify(driversData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'wacom-drivers.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
 
-    // Event listeners for filters, sort controls, and export button
-    document.getElementById('osFilter').addEventListener('change', renderTable);
-    document.getElementById('versionFilter').addEventListener('input', renderTable);
-    document.getElementById('urlFilter').addEventListener('change', renderTable);
-    //document.getElementById('noDownload').addEventListener('change', renderTable);
-    document.getElementById('hasReleaseDate').addEventListener('change', renderTable);
-    document.getElementById('sortField').addEventListener('change', renderTable);
-    document.getElementById('sortOrder').addEventListener('change', renderTable);
-    document.getElementById('exportButton').addEventListener('click', exportJSON);
-</script>
+        // Event listeners for filters, sort controls, and export button
+        document.getElementById('osFilter').addEventListener('change', renderTable);
+        document.getElementById('versionFilter').addEventListener('input', renderTable);
+        document.getElementById('urlFilter').addEventListener('change', renderTable);
+        //document.getElementById('noDownload').addEventListener('change', renderTable);
+        document.getElementById('hasReleaseDate').addEventListener('change', renderTable);
+        document.getElementById('sortField').addEventListener('change', renderTable);
+        document.getElementById('sortOrder').addEventListener('change', renderTable);
+        document.getElementById('exportButton').addEventListener('click', exportJSON);
+    </script>
 </body>
+
 </html>
