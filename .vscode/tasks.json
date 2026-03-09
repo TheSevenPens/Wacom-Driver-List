@@ -2,6 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "kill-port-8080",
+            "type": "shell",
+            "command": "$connections = Get-NetTCPConnection -LocalPort 8080 -State Listen -ErrorAction SilentlyContinue; if ($connections) { $processIds = $connections | Select-Object -ExpandProperty OwningProcess -Unique; foreach ($processId in $processIds) { Stop-Process -Id $processId -Force -ErrorAction SilentlyContinue } }",
+            "problemMatcher": []
+        },
+        {
             "label": "serve",
             "type": "npm",
             "script": "serve",
@@ -13,8 +19,8 @@
                 },
                 "background": {
                     "activeOnStart": true,
-                    "beginsPattern": "Starting up",
-                    "endsPattern": "Available on:"
+                    "beginsPattern": "^\\s*VITE\\s+v",
+                    "endsPattern": "^\\s*Local:\\s+http://localhost:8080/"
                 }
             }
         }

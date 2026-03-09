@@ -1,0 +1,174 @@
+<script>
+  import driversData from '../../wacom-drivers.json';
+
+  let osFilter = 'all';
+  let versionFilter = '';
+  let urlFilter = 'all';
+  let hasReleaseDate = true;
+  let sortField = 'releaseDate';
+  let sortOrder = 'desc';
+
+  const osFamilies = ['all', ...new Set(driversData.map((driver) => driver.OSFamily))];
+
+  $: filteredData = driversData
+    .filter((driver) => {
+      const matchesOS = osFilter === 'all' || driver.OSFamily === osFilter;
+      const matchesVersion = driver.DriverVersion.toLowerCase().includes(versionFilter.toLowerCase());
+      const matchesURL =
+        urlFilter === 'all' ||
+        (urlFilter === 'wacom' && driver.DriverURLWacom) ||
+        (urlFilter === 'archive' && driver.DriverURLArchiveDotOrg);
+      const matchesHasReleaseDate = (hasReleaseDate && driver.ReleaseDate) || !hasReleaseDate;
+      return matchesOS && matchesVersion && matchesURL && matchesHasReleaseDate;
+    })
+    .sort((a, b) => {
+      const multiplier = sortOrder === 'asc' ? 1 : -1;
+      if (sortField === 'version') {
+        return multiplier * a.DriverVersion.localeCompare(b.DriverVersion, undefined, { numeric: true });
+      }
+      if (!a.ReleaseDate && !b.ReleaseDate) return 0;
+      if (!a.ReleaseDate) return multiplier * 1;
+      if (!b.ReleaseDate) return multiplier * -1;
+      return multiplier * (new Date(a.ReleaseDate) - new Date(b.ReleaseDate));
+    });
+
+  function exportJSON() {
+    const jsonStr = JSON.stringify(driversData, null, 2);
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'wacom-drivers.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+<section class="card">
+  <div class="container-flex">
+    <div class="column-item">
+      <p class="section-header">FILTERS</p>
+      <hr />
+      <div class="control">
+        <label for="osFilter">OS</label>
+        <select id="osFilter" bind:value={osFilter}>
+          {#each osFamilies as os}
+            <option value={os}>{os === 'all' ? 'All' : os}</option>
+          {/each}
+        </select>
+      </div>
+      <div class="control">
+        <label for="versionFilter">Version</label>
+        <input type="text" id="versionFilter" bind:value={versionFilter} placeholder="e.g., 6.3.46.2" />
+      </div>
+      <div class="control">
+        <label for="urlFilter">Download source</label>
+        <select id="urlFilter" bind:value={urlFilter}>
+          <option value="all">Any</option>
+          <option value="wacom">wacom.com</option>
+          <option value="archive">archive.org</option>
+        </select>
+      </div>
+      <div class="control check-row">
+        <input type="checkbox" id="hasReleaseDate" bind:checked={hasReleaseDate} />
+        <label for="hasReleaseDate">Has release date</label>
+      </div>
+    </div>
+
+    <div class="column-item">
+      <p class="section-header">SORTING</p>
+      <hr />
+      <div class="control">
+        <label for="sortField">Sort by</label>
+        <select id="sortField" bind:value={sortField}>
+          <option value="releaseDate">Release Date</option>
+          <option value="version">Driver Version</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="sortOrder">Sort order</label>
+        <select id="sortOrder" bind:value={sortOrder}>
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="column-item">
+      <p class="section-header">NOTES</p>
+      <hr />
+      <ul>
+        <li>Some driver versions may be missing.</li>
+        <li>Wacom removes downloads for drivers older than about 2021.</li>
+      </ul>
+    </div>
+
+    <div class="column-item">
+      <p class="section-header">MISC</p>
+      <hr />
+      <p><a href="https://github.com/TheSevenPens/Wacom-Driver-List" target="_blank" rel="noreferrer">Github</a></p>
+      <p>
+        <a href="https://docs.thesevenpens.com/drawtab/resources/sevenpens-wacom-driver-list" target="_blank" rel="noreferrer">Docs</a>
+      </p>
+      <p>
+        <a href="https://archive.org/download/wacom-tablet-drivers-for-windows" target="_blank" rel="noreferrer">Drivers at archive.org</a>
+      </p>
+      <button on:click={exportJSON}>Export JSON</button>
+    </div>
+  </div>
+</section>
+
+<section class="card table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="table-header">#</th>
+        <th class="table-header">VERSION</th>
+        <th class="table-header">NAME</th>
+        <th class="table-header">OS</th>
+        <th class="table-header">DATE</th>
+        <th class="table-header">WACOM.COM DOWNLOAD</th>
+        <th class="table-header">ARCHIVE.ORG DOWNLOAD</th>
+        <th class="table-header">NOTES</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#if filteredData.length === 0}
+        <tr>
+          <td colspan="8">No matching drivers</td>
+        </tr>
+      {:else}
+        {#each filteredData as driver, index}
+          <tr>
+            <td class="version-value">{index + 1}</td>
+            <td class="version-value">{driver.DriverVersion}</td>
+            <td>{driver.DriverName}</td>
+            <td>{driver.OSFamily}</td>
+            <td>{driver.ReleaseDate || '-'}</td>
+            <td>
+              {#if driver.DriverURLWacom}
+                <a href={driver.DriverURLWacom} target="_blank" rel="noreferrer">Driver (Wacom.com)</a>
+              {:else}
+                -
+              {/if}
+            </td>
+            <td>
+              {#if driver.DriverURLArchiveDotOrg}
+                <a href={driver.DriverURLArchiveDotOrg} target="_blank" rel="noreferrer">Driver (Archive.org)</a>
+              {:else}
+                -
+              {/if}
+            </td>
+            <td>
+              {#if driver.ReleaseNotesURL}
+                <a href={driver.ReleaseNotesURL} target="_blank" rel="noreferrer">RelNotes</a>
+              {:else}
+                -
+              {/if}
+            </td>
+          </tr>
+        {/each}
+      {/if}
+    </tbody>
+  </table>
+</section>
