@@ -124,44 +124,40 @@
       <tr>
         <th class="table-header">#</th>
         <th class="table-header">VERSION</th>
-        <th class="table-header">NAME</th>
         <th class="table-header">OS</th>
         <th class="table-header">DATE</th>
-        <th class="table-header">WACOM.COM DOWNLOAD</th>
-        <th class="table-header">ARCHIVE.ORG DOWNLOAD</th>
-        <th class="table-header">NOTES</th>
+        <th class="table-header">DOWNLOADS</th>
       </tr>
     </thead>
     <tbody>
       {#if filteredData.length === 0}
         <tr>
-          <td colspan="8">No matching drivers</td>
+          <td colspan="5">No matching drivers</td>
         </tr>
       {:else}
         {#each filteredData as driver, index}
           <tr>
             <td class="version-value">{index + 1}</td>
             <td class="version-value">{driver.DriverVersion}</td>
-            <td>{driver.DriverName}</td>
             <td>{driver.OSFamily}</td>
             <td>{driver.ReleaseDate || '-'}</td>
             <td>
-              {#if driver.DriverURLWacom}
-                <a href={driver.DriverURLWacom} target="_blank" rel="noreferrer">Driver (Wacom.com)</a>
-              {:else}
-                -
-              {/if}
-            </td>
-            <td>
-              {#if driver.DriverURLArchiveDotOrg}
-                <a href={driver.DriverURLArchiveDotOrg} target="_blank" rel="noreferrer">Driver (Archive.org)</a>
-              {:else}
-                -
-              {/if}
-            </td>
-            <td>
-              {#if driver.ReleaseNotesURL}
-                <a href={driver.ReleaseNotesURL} target="_blank" rel="noreferrer">RelNotes</a>
+              {#if driver.DriverURLArchiveDotOrg || driver.DriverURLWacom || driver.ReleaseNotesURL}
+                {#if driver.DriverURLWacom}
+                  <a href={driver.DriverURLWacom} target="_blank" rel="noreferrer">Driver</a>
+                {/if}
+                {#if driver.DriverURLWacom && driver.DriverURLArchiveDotOrg}
+                  ,
+                {/if}
+                {#if driver.DriverURLArchiveDotOrg}
+                  <a href={driver.DriverURLArchiveDotOrg} target="_blank" rel="noreferrer">Driver (Archive)</a>
+                {/if}
+                {#if (driver.DriverURLWacom || driver.DriverURLArchiveDotOrg) && driver.ReleaseNotesURL}
+                  ,
+                {/if}
+                {#if driver.ReleaseNotesURL}
+                  <a href={driver.ReleaseNotesURL} target="_blank" rel="noreferrer">RelNotes</a>
+                {/if}
               {:else}
                 -
               {/if}
