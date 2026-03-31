@@ -1,36 +1,38 @@
 <script>
   import driversData from '../../wacom-drivers.json';
 
-  let osFilter = 'all';
-  let versionFilter = '';
-  let urlFilter = 'all';
-  let hasReleaseDate = true;
-  let sortField = 'releaseDate';
-  let sortOrder = 'desc';
+  let osFilter = $state('all');
+  let versionFilter = $state('');
+  let urlFilter = $state('all');
+  let hasReleaseDate = $state(true);
+  let sortField = $state('releaseDate');
+  let sortOrder = $state('desc');
 
   const osFamilies = ['all', ...new Set(driversData.map((driver) => driver.OSFamily))];
 
-  $: filteredData = driversData
-    .filter((driver) => {
-      const matchesOS = osFilter === 'all' || driver.OSFamily === osFilter;
-      const matchesVersion = driver.DriverVersion.toLowerCase().includes(versionFilter.toLowerCase());
-      const matchesURL =
-        urlFilter === 'all' ||
-        (urlFilter === 'wacom' && driver.DriverURLWacom) ||
-        (urlFilter === 'archive' && driver.DriverURLArchiveDotOrg);
-      const matchesHasReleaseDate = (hasReleaseDate && driver.ReleaseDate) || !hasReleaseDate;
-      return matchesOS && matchesVersion && matchesURL && matchesHasReleaseDate;
-    })
-    .sort((a, b) => {
-      const multiplier = sortOrder === 'asc' ? 1 : -1;
-      if (sortField === 'version') {
-        return multiplier * a.DriverVersion.localeCompare(b.DriverVersion, undefined, { numeric: true });
-      }
-      if (!a.ReleaseDate && !b.ReleaseDate) return 0;
-      if (!a.ReleaseDate) return multiplier * 1;
-      if (!b.ReleaseDate) return multiplier * -1;
-      return multiplier * (new Date(a.ReleaseDate) - new Date(b.ReleaseDate));
-    });
+  let filteredData = $derived(
+    driversData
+      .filter((driver) => {
+        const matchesOS = osFilter === 'all' || driver.OSFamily === osFilter;
+        const matchesVersion = driver.DriverVersion.toLowerCase().includes(versionFilter.toLowerCase());
+        const matchesURL =
+          urlFilter === 'all' ||
+          (urlFilter === 'wacom' && driver.DriverURLWacom) ||
+          (urlFilter === 'archive' && driver.DriverURLArchiveDotOrg);
+        const matchesHasReleaseDate = (hasReleaseDate && driver.ReleaseDate) || !hasReleaseDate;
+        return matchesOS && matchesVersion && matchesURL && matchesHasReleaseDate;
+      })
+      .sort((a, b) => {
+        const multiplier = sortOrder === 'asc' ? 1 : -1;
+        if (sortField === 'version') {
+          return multiplier * a.DriverVersion.localeCompare(b.DriverVersion, undefined, { numeric: true });
+        }
+        if (!a.ReleaseDate && !b.ReleaseDate) return 0;
+        if (!a.ReleaseDate) return multiplier * 1;
+        if (!b.ReleaseDate) return multiplier * -1;
+        return multiplier * (new Date(a.ReleaseDate) - new Date(b.ReleaseDate));
+      })
+  );
 
   function exportJSON() {
     const jsonStr = JSON.stringify(driversData, null, 2);
@@ -113,7 +115,7 @@
       <p>
         <a href="https://archive.org/download/wacom-tablet-drivers-for-windows" target="_blank" rel="noreferrer">Drivers at archive.org</a>
       </p>
-      <button on:click={exportJSON}>Export JSON</button>
+      <button onclick={exportJSON}>Export JSON</button>
     </div>
   </div>
 </section>

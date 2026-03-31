@@ -2,7 +2,7 @@
   import DriverList from './components/DriverList.svelte';
   import JsonMerger from './components/JsonMerger.svelte';
 
-  let activeView = 'list';
+  let activeView = $state('list');
 </script>
 
 <main class="shell">
@@ -11,13 +11,13 @@
     <nav class="tabs" aria-label="Main views">
       <button
         class:active={activeView === 'list'}
-        on:click={() => (activeView = 'list')}
+        onclick={() => (activeView = 'list')}
       >
         Driver List
       </button>
       <button
         class:active={activeView === 'merge'}
-        on:click={() => (activeView = 'merge')}
+        onclick={() => (activeView = 'merge')}
       >
         JSON Merger
       </button>

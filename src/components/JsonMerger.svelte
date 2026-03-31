@@ -1,21 +1,22 @@
 <script>
-  let baseData = null;
-  let changesData = null;
-  let baseFileName = '';
-  let changesFileName = '';
-  let baseStatus = 'Waiting...';
-  let changesStatus = 'Waiting...';
-  let baseLoaded = false;
-  let changesLoaded = false;
+  let baseData = $state(null);
+  let changesData = $state(null);
+  let baseFileName = $state('');
+  let changesFileName = $state('');
+  let baseStatus = $state('Waiting...');
+  let changesStatus = $state('Waiting...');
+  let baseLoaded = $state(false);
+  let changesLoaded = $state(false);
 
-  let conflicts = [];
+  let conflicts = $state([]);
 
-  const hiddenInput = { base: null, changes: null };
+  let hiddenInputBase = $state(null);
+  let hiddenInputChanges = $state(null);
 
-  $: countNew = conflicts.filter((c) => c.type === 'new').length;
-  $: countMod = conflicts.filter((c) => c.type === 'mod').length;
-  $: selectedCount = conflicts.filter((c) => c.selected).length;
-  $: isReady = !!(baseData && changesData);
+  let countNew = $derived(conflicts.filter((c) => c.type === 'new').length);
+  let countMod = $derived(conflicts.filter((c) => c.type === 'mod').length);
+  let selectedCount = $derived(conflicts.filter((c) => c.selected).length);
+  let isReady = $derived(!!(baseData && changesData));
 
   function onDragOver(event) {
     event.preventDefault();
@@ -30,7 +31,8 @@
   }
 
   function openFilePicker(type) {
-    hiddenInput[type]?.click();
+    if (type === 'base') hiddenInputBase?.click();
+    else hiddenInputChanges?.click();
   }
 
   async function handleFile(file, type) {
@@ -73,11 +75,11 @@
     const baseMap = new Map(baseData.map((d) => [d.DriverUID, d]));
     const changesMap = new Map(changesData.map((d) => [d.DriverUID, d]));
 
-    conflicts = [];
+    const result = [];
 
     for (const [id, newRecord] of changesMap.entries()) {
       if (!baseMap.has(id)) {
-        conflicts.push({
+        result.push({
           id,
           type: 'new',
           baseRecord: null,
@@ -100,7 +102,7 @@
           }
         }
 
-        conflicts.push({
+        result.push({
           id,
           type: 'mod',
           baseRecord,
@@ -110,16 +112,16 @@
         });
       }
     }
+
+    conflicts = result;
   }
 
   function toggleRecord(index, checked) {
     conflicts[index].selected = checked;
-    conflicts = [...conflicts];
   }
 
   function toggleField(conflictIndex, key, checked) {
     conflicts[conflictIndex].fieldSelections[key] = checked;
-    conflicts = [...conflicts];
   }
 
   function exportMergedJSON() {
@@ -179,21 +181,21 @@
 
 <section class="card merger-wrap">
   <div class="drop-zones">
-    <input type="file" accept=".json" bind:this={hiddenInput.base} on:change={(e) => e.target.files[0] && handleFile(e.target.files[0], 'base')} hidden />
+    <input type="file" accept=".json" bind:this={hiddenInputBase} onchange={(e) => e.target.files[0] && handleFile(e.target.files[0], 'base')} hidden />
     <input
       type="file"
       accept=".json"
-      bind:this={hiddenInput.changes}
-      on:change={(e) => e.target.files[0] && handleFile(e.target.files[0], 'changes')}
+      bind:this={hiddenInputChanges}
+      onchange={(e) => e.target.files[0] && handleFile(e.target.files[0], 'changes')}
       hidden
     />
 
     <button
       class="drop-zone"
       class:loaded={baseLoaded}
-      on:dragover={onDragOver}
-      on:drop={(e) => onDrop(e, 'base')}
-      on:click={() => openFilePicker('base')}
+      ondragover={onDragOver}
+      ondrop={(e) => onDrop(e, 'base')}
+      onclick={() => openFilePicker('base')}
     >
       <h3>Base File</h3>
       <p>wacom-drivers.json</p>
@@ -204,9 +206,9 @@
     <button
       class="drop-zone"
       class:loaded={changesLoaded}
-      on:dragover={onDragOver}
-      on:drop={(e) => onDrop(e, 'changes')}
-      on:click={() => openFilePicker('changes')}
+      ondragover={onDragOver}
+      ondrop={(e) => onDrop(e, 'changes')}
+      onclick={() => openFilePicker('changes')}
     >
       <h3>Changes File</h3>
       <p>wacom_driver_additions.json</p>
@@ -237,7 +239,7 @@
                 <span class="record-id">{item.id}</span>
               </div>
               <label>
-                <input type="checkbox" checked={item.selected} on:change={(e) => toggleRecord(index, e.target.checked)} />
+                <input type="checkbox" bind:checked={item.selected} />
                 include
               </label>
             </div>
@@ -260,8 +262,7 @@
                       <td>
                         <input
                           type="checkbox"
-                          checked={item.fieldSelections[key]}
-                          on:change={(e) => toggleField(index, key, e.target.checked)}
+                          bind:checked={item.fieldSelections[key]}
                         />
                       </td>
                       <td>{key}</td>
@@ -279,7 +280,7 @@
 
     <div class="actions">
       <span>{selectedCount} records selected</span>
-      <button class="primary" on:click={exportMergedJSON}>Export Merged JSON</button>
+      <button class="primary" onclick={exportMergedJSON}>Export Merged JSON</button>
     </div>
   {/if}
 </section>
