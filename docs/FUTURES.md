@@ -29,7 +29,7 @@ Things we should improve or consider doing.
 
 - Add a README with setup instructions, an overview of the project, and how to contribute.
 - Document the data format and what each field in `wacom-drivers.json` means.
-- Document the utility scripts (`merge_drivers.js`, `Download.ps1`).
+- Document the utility scripts (`merge_drivers.js`, `ArchiveDownloads.ps1`).
 
 ## TypeScript
 
@@ -53,7 +53,7 @@ Wacom publishes a machine-readable update manifest at `https://link.wacom.com/wd
 
 - **Download URLs from cdn.wacom.com**: The XML has direct CDN download URLs (base URL + filename) for every driver version it lists (~69 Windows, ~73 macOS). We could cross-reference these against `wacom-drivers.json` to fill in missing `DriverURLWacom` values.
 - **Supported OS versions per driver**: The XML lists exactly which OS versions each driver supports (e.g. "Windows 10", "Windows 11", "macOS 14.0"). We could add a `SupportedOS` field to our data.
-- **CRC checksums**: Each driver entry includes a CRC32 checksum. We could store these and use them to verify downloaded files in `Download.ps1`.
+- **CRC checksums**: Each driver entry includes a CRC32 checksum. We could store these and use them to verify downloaded files in `ArchiveDownloads.ps1`.
 
 ### New data we could surface
 
@@ -66,6 +66,10 @@ Wacom publishes a machine-readable update manifest at `https://link.wacom.com/wd
 - **Periodic sync script**: Fetch `update.xml` on a schedule (CI cron job or GitHub Action), parse it, and auto-generate a PR if new driver versions appear that aren't in `wacom-drivers.json`.
 - **Diff tool**: Compare the cached `data/wacom-update.xml` against a fresh fetch to detect when Wacom adds, removes, or changes driver listings.
 - **Validate our data**: Use the XML as a source of truth to flag entries in `wacom-drivers.json` that have incorrect URLs, version numbers, or missing OS info.
+
+### Data quality concerns
+
+- **Model numbers may be inaccurate**: The XML appears to use internal codes rather than actual customer-facing model numbers. For example, `PT470BT` is listed for the Wacom Intuos Pro S BT, but this is not a real product model number. Model numbers from the XML should be validated against known Wacom product catalogs before being treated as authoritative.
 
 ### UI features this enables
 

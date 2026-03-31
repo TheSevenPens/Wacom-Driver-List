@@ -7,7 +7,7 @@
     "drivermax": "6.3.40-2",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -18,7 +18,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -29,7 +29,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -40,7 +40,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -51,7 +51,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -62,7 +62,7 @@
     "drivermax": "6.3.15-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -73,7 +73,7 @@
     "drivermax": "6.3.40-2",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -84,7 +84,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -95,7 +95,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -106,7 +106,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -117,7 +117,7 @@
     "drivermax": "6.3.46-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -128,7 +128,7 @@
     "drivermax": "6.3.46-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -139,7 +139,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -150,7 +150,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -161,7 +161,7 @@
     "drivermax": "6.3.46-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -172,7 +172,7 @@
     "drivermax": "6.4.7-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -183,7 +183,7 @@
     "drivermax": "6.3.46-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -194,7 +194,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -205,7 +205,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -216,7 +216,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -227,7 +227,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -238,7 +238,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -249,7 +249,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -260,62 +260,62 @@
     "drivermax": "6.3.15-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
     "name": "DTC121E",
     "sensorid": "90833901",
-    "model": null,
+    "model": "DTC121E",
     "drivermin": "6.4.3-1",
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
-    "name": "DTH-1152",
+    "name": "DTH1152",
     "sensorid": "90833754",
-    "model": null,
+    "model": "DTH1152",
     "drivermin": "6.3.24-5",
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
-    ]
-  },
-  {
-    "name": "DTH-2242",
-    "sensorid": "90832985",
-    "model": null,
-    "drivermin": "6.3.8-4",
-    "drivermax": "6.4.3-1",
-    "platforms": [
-      "Windows",
-      "macOS"
-    ]
-  },
-  {
-    "name": "DTH-2452",
-    "sensorid": "90833789",
-    "model": null,
-    "drivermin": "6.3.24-5",
-    "drivermax": null,
-    "platforms": [
-      "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
     "name": "DTH134E",
     "sensorid": "90833900",
-    "model": null,
+    "model": "DTH134E",
     "drivermin": "6.4.3-1",
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
+    ]
+  },
+  {
+    "name": "DTH2242",
+    "sensorid": "90832985",
+    "model": "DTH2242",
+    "drivermin": "6.3.8-4",
+    "drivermax": "6.4.3-1",
+    "platforms": [
+      "Windows",
+      "MacOS"
+    ]
+  },
+  {
+    "name": "DTH2452",
+    "sensorid": "90833789",
+    "model": "DTH2452",
+    "drivermin": "6.3.24-5",
+    "drivermax": null,
+    "platforms": [
+      "Windows",
+      "MacOS"
     ]
   },
   {
@@ -326,62 +326,40 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
-    "name": "DTK-1651",
+    "name": "DTK1651",
     "sensorid": "90833731",
-    "model": null,
+    "model": "DTK1651",
     "drivermin": "6.3.24-5",
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
-    "name": "DTK-1660E",
+    "name": "DTK1660E",
     "sensorid": "90833814",
-    "model": null,
+    "model": "DTK1660E",
     "drivermin": "6.3.34-3",
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
-    "name": "DTK-1660E VAVE",
+    "name": "DTK1660E VAVE",
     "sensorid": "90833840",
-    "model": null,
+    "model": "DTK1660E VAVE",
     "drivermin": "6.3.40-2",
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
-    ]
-  },
-  {
-    "name": "DTK-2241",
-    "sensorid": "90832983",
-    "model": null,
-    "drivermin": "6.3.8-4",
-    "drivermax": "6.4.3-1",
-    "platforms": [
-      "Windows",
-      "macOS"
-    ]
-  },
-  {
-    "name": "DTK-2451",
-    "sensorid": "90833794",
-    "model": null,
-    "drivermin": "6.3.24-5",
-    "drivermax": null,
-    "platforms": [
-      "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -392,7 +370,29 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
+    ]
+  },
+  {
+    "name": "DTK2241",
+    "sensorid": "90832983",
+    "model": "DTK2241",
+    "drivermin": "6.3.8-4",
+    "drivermax": "6.4.3-1",
+    "platforms": [
+      "Windows",
+      "MacOS"
+    ]
+  },
+  {
+    "name": "DTK2451",
+    "sensorid": "90833794",
+    "model": "DTK2451",
+    "drivermin": "6.3.24-5",
+    "drivermax": null,
+    "platforms": [
+      "Windows",
+      "MacOS"
     ]
   },
   {
@@ -403,62 +403,62 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
-    "name": "DTU-1031",
+    "name": "DTU1031",
     "sensorid": "90833147",
-    "model": null,
+    "model": "DTU1031",
     "drivermin": "6.3.8-4",
     "drivermax": "6.4.1-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
-    "name": "DTU-1031AX",
+    "name": "DTU1031AX",
     "sensorid": "90833823",
-    "model": null,
+    "model": "DTU1031AX",
     "drivermin": "6.3.38-2",
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
-    "name": "DTU-1031X",
+    "name": "DTU1031X",
     "sensorid": "90833711",
-    "model": null,
+    "model": "DTU1031X",
     "drivermin": "6.3.9w5",
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
-    "name": "DTU-1141",
+    "name": "DTU1141",
     "sensorid": "90833718",
-    "model": null,
+    "model": "DTU1141",
     "drivermin": "6.3.9w5",
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
-    "name": "DTU-1141B",
+    "name": "DTU1141B",
     "sensorid": "90833753",
-    "model": null,
+    "model": "DTU1141B",
     "drivermin": "6.3.24-5",
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -469,7 +469,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -480,7 +480,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -491,7 +491,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -502,7 +502,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -513,7 +513,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -524,7 +524,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -535,7 +535,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -546,7 +546,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -557,7 +557,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -568,7 +568,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -579,7 +579,7 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -590,7 +590,7 @@
     "drivermax": "6.3.15-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -601,7 +601,7 @@
     "drivermax": "6.3.15-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -612,7 +612,7 @@
     "drivermax": "6.3.15-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -623,7 +623,7 @@
     "drivermax": "6.3.15-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -634,7 +634,7 @@
     "drivermax": "6.3.15-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -645,7 +645,7 @@
     "drivermax": "6.3.15-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -656,7 +656,7 @@
     "drivermax": "6.3.15-3",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -667,7 +667,7 @@
     "drivermax": "6.3.41-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -678,7 +678,7 @@
     "drivermax": "6.3.41-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -689,7 +689,7 @@
     "drivermax": "6.3.41-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -700,7 +700,7 @@
     "drivermax": "6.3.41-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -711,7 +711,7 @@
     "drivermax": "6.4.3-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -722,7 +722,7 @@
     "drivermax": "6.3.46-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -733,7 +733,7 @@
     "drivermax": "6.3.46-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -744,7 +744,7 @@
     "drivermax": "6.3.46-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -755,7 +755,7 @@
     "drivermax": "6.3.46-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -766,7 +766,7 @@
     "drivermax": "6.3.46-1",
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -777,7 +777,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -788,7 +788,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -799,7 +799,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -810,7 +810,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -821,7 +821,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -832,7 +832,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -843,7 +843,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -854,7 +854,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -865,7 +865,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -876,7 +876,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -887,7 +887,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -898,7 +898,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -909,7 +909,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -920,7 +920,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -931,7 +931,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -942,7 +942,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -953,7 +953,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -964,7 +964,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -975,18 +975,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
-    ]
-  },
-  {
-    "name": "Wacom Intuos Pro M BT",
-    "sensorid": "90833912",
-    "model": "PTK670BT",
-    "drivermin": "6.4.9-2",
-    "drivermax": null,
-    "platforms": [
-      "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -997,29 +986,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
-    ]
-  },
-  {
-    "name": "Wacom Intuos Pro S BT",
-    "sensorid": "90833910",
-    "model": "PT470BT",
-    "drivermin": "6.4.9-2",
-    "drivermax": null,
-    "platforms": [
-      "Windows",
-      "macOS"
-    ]
-  },
-  {
-    "name": "Wacom Intuos Pro Shimaseiki",
-    "sensorid": "90833921",
-    "model": "PTK870K022D",
-    "drivermin": "6.4.9-2",
-    "drivermax": null,
-    "platforms": [
-      "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -1030,7 +997,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -1041,7 +1008,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -1052,7 +1019,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -1063,7 +1030,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -1074,7 +1041,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -1085,7 +1052,7 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
@@ -1096,29 +1063,29 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
     "name": "Wacom One M",
     "sensorid": "87097603",
-    "model": "CTC6110BT",
+    "model": "CTC6110WL",
     "drivermin": "6.4.3-1",
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   },
   {
     "name": "Wacom One S",
     "sensorid": "87097601",
-    "model": "CTC4110BT",
+    "model": "CTC4110WL",
     "drivermin": "6.4.3-1",
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS"
+      "MacOS"
     ]
   }
 ]
