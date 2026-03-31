@@ -295,6 +295,11 @@ tbody tr:nth-child(even):hover {
   font-weight: 600;
 }
 
+.url-cell {
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
 /* JSON Merger (dark theme) */
 
 .merger-wrap {
