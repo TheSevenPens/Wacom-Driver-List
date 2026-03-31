@@ -1,5 +1,6 @@
 <script>
-  import driversData from '../../wacom-drivers.json';
+  import { base } from '$app/paths';
+  import driversData from '$lib/data/wacom-drivers.json';
 
   let osFilter = $state('all');
   let versionFilter = $state('');
@@ -140,7 +141,7 @@
         {#each filteredData as driver, index}
           <tr>
             <td class="version-value">{index + 1}</td>
-            <td class="version-value">{driver.DriverVersion}</td>
+            <td class="version-value"><a href="{base}/drivers/{encodeURIComponent(driver.DriverVersion)}">{driver.DriverVersion}</a></td>
             <td>{driver.OSFamily}</td>
             <td>{driver.ReleaseDate || '-'}</td>
             <td>

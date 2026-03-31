@@ -46,7 +46,8 @@ a {
   gap: 0.35rem;
 }
 
-.sidebar-nav button {
+.sidebar-nav a {
+  display: block;
   border: none;
   background: transparent;
   color: #b0c4e8;
@@ -56,14 +57,15 @@ a {
   text-align: left;
   font: inherit;
   font-size: 0.95rem;
+  text-decoration: none;
 }
 
-.sidebar-nav button:hover {
+.sidebar-nav a:hover {
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
 
-.sidebar-nav button.active {
+.sidebar-nav a.active {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
   font-weight: 700;
@@ -94,6 +96,35 @@ a {
   background: #4a6fa5;
   border-color: #4a6fa5;
   color: #ffffff;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #0f4cc4;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 0;
+  text-decoration: none;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #0f4cc4;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.25rem 0;
+  margin-bottom: 0.75rem;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
 }
 
 .card {

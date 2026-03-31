@@ -1,6 +1,6 @@
 <script>
-  import DriverList from './DriverList.svelte';
-  import JsonMerger from './JsonMerger.svelte';
+  import DriverList from '$lib/components/DriverList.svelte';
+  import JsonMerger from '$lib/components/JsonMerger.svelte';
 
   let activeSubView = $state('list');
 </script>

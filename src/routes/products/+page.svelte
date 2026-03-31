@@ -1,5 +1,6 @@
 <script>
-  import productsData from '../../data/wacom-products.json';
+  import { base } from '$app/paths';
+  import productsData from '$lib/data/wacom-products.json';
 
   let nameFilter = $state('');
 
@@ -53,7 +54,7 @@
         {#each filteredProducts as product, index}
           <tr>
             <td>{index + 1}</td>
-            <td class="version-value">{product.name}</td>
+            <td class="version-value"><a href="{base}/products/{encodeURIComponent(product.name)}">{product.name}</a></td>
             <td>{product.model || '-'}</td>
             <td>{product.platforms.join(', ')}</td>
             <td>{product.drivermin || '-'}</td>
