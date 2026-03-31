@@ -3,12 +3,29 @@
     [ValidateSet("DOWNLOAD", "UPDATEMETADATA")]
     [string]$Mode,
 
-    [Parameter(Mandatory=$true, Position=1)]
+    [Parameter(Position=1)]
     [string]$RootFolder
 )
 
-$ErrorActionPreference = "stop" 
+$ErrorActionPreference = "stop"
 Set-StrictMode -Version 1
+
+# If RootFolder not provided, read from .env file
+if (-not $RootFolder) {
+    $envFile = Join-Path $PSScriptRoot ".env"
+    if (Test-Path $envFile) {
+        foreach ($line in Get-Content $envFile) {
+            if ($line.StartsWith("ARCHIVE_ROOT=")) {
+                $RootFolder = $line.Substring("ARCHIVE_ROOT=".Length)
+                break
+            }
+        }
+    }
+    if (-not $RootFolder) {
+        Write-Error "RootFolder not provided and ARCHIVE_ROOT not found in .env"
+        exit 1
+    }
+}
 
 if (-not (Test-Path $RootFolder -PathType Container)) {
     Write-Error "Root folder does not exist: $RootFolder"
