@@ -1,11 +1,11 @@
 <script>
   import { base } from '$app/paths';
-  import productsData from '$lib/data/wacom-products.json';
+  import tabletsData from '$lib/data/wacom-products.json';
 
   let nameFilter = $state('');
 
   let filteredProducts = $derived(
-    productsData.filter((product) => {
+    tabletsData.filter((product) => {
       return product.name.toLowerCase().includes(nameFilter.toLowerCase());
     })
   );
@@ -17,7 +17,7 @@
       <p class="section-header">FILTERS</p>
       <hr />
       <div class="control">
-        <label for="nameFilter">Product name</label>
+        <label for="nameFilter">Tablet name</label>
         <input type="text" id="nameFilter" bind:value={nameFilter} placeholder="e.g., Intuos Pro" />
       </div>
     </div>
@@ -27,7 +27,7 @@
       <hr />
       <ul>
         <li>Data sourced from Wacom's <code>update.xml</code>.</li>
-        <li>{productsData.length} products total.</li>
+        <li>{tabletsData.length} tablets total.</li>
       </ul>
     </div>
   </div>
@@ -38,7 +38,7 @@
     <thead>
       <tr>
         <th class="table-header">#</th>
-        <th class="table-header">PRODUCT</th>
+        <th class="table-header">TABLET</th>
         <th class="table-header">MODEL</th>
         <th class="table-header">PLATFORMS</th>
         <th class="table-header">MIN DRIVER</th>
@@ -48,13 +48,13 @@
     <tbody>
       {#if filteredProducts.length === 0}
         <tr>
-          <td colspan="6">No matching products</td>
+          <td colspan="6">No matching tablets</td>
         </tr>
       {:else}
         {#each filteredProducts as product, index}
           <tr>
             <td>{index + 1}</td>
-            <td class="version-value"><a href="{base}/products/{encodeURIComponent(product.name)}">{product.name}</a></td>
+            <td class="version-value"><a href="{base}/tablets/{encodeURIComponent(product.name)}">{product.name}</a></td>
             <td>{product.model || '-'}</td>
             <td>{product.platforms.join(', ')}</td>
             <td>{product.drivermin || '-'}</td>

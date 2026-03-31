@@ -480,7 +480,6 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -492,7 +491,6 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -504,7 +502,6 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -527,7 +524,6 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -550,7 +546,6 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -573,7 +568,6 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -585,7 +579,6 @@
     "drivermax": "6.4.10-3",
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -707,7 +700,6 @@
     "drivermax": "6.3.41-1",
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -840,7 +832,6 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -852,7 +843,6 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -930,9 +920,6 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS",
-      "macOS",
-      "macOS",
       "macOS"
     ]
   },
@@ -944,9 +931,6 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS",
-      "macOS",
-      "macOS",
       "macOS"
     ]
   },
@@ -1123,7 +1107,6 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   },
@@ -1135,7 +1118,6 @@
     "drivermax": null,
     "platforms": [
       "Windows",
-      "macOS",
       "macOS"
     ]
   }

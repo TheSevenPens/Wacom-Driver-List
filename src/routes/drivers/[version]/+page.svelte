@@ -60,16 +60,16 @@
 </section>
 
 <section class="card">
-  <h3>Compatible Products ({compatibleProducts.length})</h3>
+  <h3>Compatible Tablets ({compatibleProducts.length})</h3>
 
   {#if compatibleProducts.length === 0}
-    <p>No compatible products found for this driver version.</p>
+    <p>No compatible tablets found for this driver version.</p>
   {:else}
     <table>
       <thead>
         <tr>
           <th class="table-header">#</th>
-          <th class="table-header">PRODUCT</th>
+          <th class="table-header">TABLET</th>
           <th class="table-header">MODEL</th>
           <th class="table-header">PLATFORMS</th>
         </tr>
@@ -78,7 +78,7 @@
         {#each compatibleProducts as product, index}
           <tr>
             <td>{index + 1}</td>
-            <td class="version-value"><a href="{base}/products/{encodeURIComponent(product.name)}">{product.name}</a></td>
+            <td class="version-value"><a href="{base}/tablets/{encodeURIComponent(product.name)}">{product.name}</a></td>
             <td>{product.model || '-'}</td>
             <td>{product.platforms.join(', ')}</td>
           </tr>

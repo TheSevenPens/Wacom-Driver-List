@@ -23,7 +23,7 @@
   );
 </script>
 
-<a class="back-btn" href="{base}/products">&larr; Back to Products</a>
+<a class="back-btn" href="{base}/tablets">&larr; Back to Tablets</a>
 
 <section class="card">
   <h2>{productName}</h2>
@@ -38,7 +38,7 @@
       </tbody>
     </table>
   {:else}
-    <p>Product not found.</p>
+    <p>Tablet not found.</p>
   {/if}
 </section>
 
@@ -46,7 +46,7 @@
   <h3>Compatible Drivers ({compatibleDrivers.length})</h3>
 
   {#if compatibleDrivers.length === 0}
-    <p>No compatible drivers found for this product.</p>
+    <p>No compatible drivers found for this tablet.</p>
   {:else}
     <table>
       <thead>

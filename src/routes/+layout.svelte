@@ -17,10 +17,10 @@
         Drivers
       </a>
       <a
-        href="{base}/products"
-        class:active={$page.url.pathname.startsWith(`${base}/products`)}
+        href="{base}/tablets"
+        class:active={$page.url.pathname.startsWith(`${base}/tablets`)}
       >
-        Products
+        Tablets
       </a>
     </nav>
   </aside>
