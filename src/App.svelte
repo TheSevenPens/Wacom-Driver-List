@@ -1,32 +1,34 @@
 <script>
-  import DriverList from './components/DriverList.svelte';
-  import JsonMerger from './components/JsonMerger.svelte';
+  import DriversTab from './components/DriversTab.svelte';
+  import ProductsTab from './components/ProductsTab.svelte';
 
-  let activeView = $state('list');
+  let activeTab = $state('drivers');
 </script>
 
-<main class="shell">
-  <header class="topbar">
-    <h1>SevenPens Wacom Driver List</h1>
-    <nav class="tabs" aria-label="Main views">
+<div class="layout">
+  <aside class="sidebar">
+    <h1 class="sidebar-title">SevenPens Wacom Driver List</h1>
+    <nav class="sidebar-nav" aria-label="Main sections">
       <button
-        class:active={activeView === 'list'}
-        onclick={() => (activeView = 'list')}
+        class:active={activeTab === 'drivers'}
+        onclick={() => (activeTab = 'drivers')}
       >
-        Driver List
+        Drivers
       </button>
       <button
-        class:active={activeView === 'merge'}
-        onclick={() => (activeView = 'merge')}
+        class:active={activeTab === 'products'}
+        onclick={() => (activeTab = 'products')}
       >
-        JSON Merger
+        Products
       </button>
     </nav>
-  </header>
+  </aside>
 
-  {#if activeView === 'list'}
-    <DriverList />
-  {:else}
-    <JsonMerger />
-  {/if}
-</main>
+  <main class="content">
+    {#if activeTab === 'drivers'}
+      <DriversTab />
+    {:else if activeTab === 'products'}
+      <ProductsTab />
+    {/if}
+  </main>
+</div>
