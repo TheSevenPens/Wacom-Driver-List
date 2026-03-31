@@ -156,7 +156,7 @@
                   ,
                 {/if}
                 {#if driver.ReleaseNotesURL}
-                  <a href={driver.ReleaseNotesURL} target="_blank" rel="noreferrer">RelNotes</a>
+                  <a href={driver.ReleaseNotesURL} target="_blank" rel="noreferrer">Notes</a>
                 {/if}
               {:else}
                 -

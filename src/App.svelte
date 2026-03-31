@@ -7,7 +7,7 @@
 
 <main class="shell">
   <header class="topbar">
-    <h1>SevenPens Wacom Driver Toolkit</h1>
+    <h1>SevenPens Wacom Driver List</h1>
     <nav class="tabs" aria-label="Main views">
       <button
         class:active={activeView === 'list'}

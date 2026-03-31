@@ -61,7 +61,7 @@ foreach ($driver in $drivers) {
         New-Item -ItemType Directory -Path $folderPath -Force | Out-Null
         Write-Host "Created folder: $folderPath"
     }
-    $timeout_head = 500
+    $timeout_head = 10000
     $timeout_download = 3000
 
     $today_string = Get-Date -Format "yyyy-MM-dd";
@@ -88,10 +88,10 @@ foreach ($driver in $drivers) {
         }
         else 
         {
-            $url_entry = $download_dic[$url] = [PSCustomObject]@{
+            $url_entry = [PSCustomObject]@{
                 Result = "UNKNOWN"
                 DateTested = "" }
-                $download_dic[ $url ] = $url_entry
+            $download_dic[ $url ] = $url_entry
         }
 
         if ($url_entry.Result -eq "UNKNOWN")
@@ -100,8 +100,8 @@ foreach ($driver in $drivers) {
             if ($mode -eq "UPDATEMETADATA")
             {
                 $request = [System.Net.WebRequest]::Create($url)
-            
                 $request.Method = "HEAD"  # Use HEAD to check existence without downloading
+                $request.Timeout = $timeout_head
                 try {
                     $response = $request.GetResponse()
                     $response.Close()
@@ -109,27 +109,36 @@ foreach ($driver in $drivers) {
                     $url_entry.Result = "EXISTS"
                 }
                 catch {
-                    Write-host "404 for" $url
-                    Start-Sleep -Milliseconds $timeout_head
-                    $url_entry.Result = "DOESNOTEXIST"
+                    $statusCode = $null
+                    if ($_.Exception.InnerException -is [System.Net.WebException]) {
+                        $webResponse = $_.Exception.InnerException.Response
+                        if ($webResponse) { $statusCode = [int]$webResponse.StatusCode }
+                    }
+                    if ($statusCode -eq 404 -or $statusCode -eq 410) {
+                        Write-Host "Not found ($statusCode) for" $url
+                        $url_entry.Result = "DOESNOTEXIST"
+                    } else {
+                        Write-Warning "Request failed for $url : $_"
+                        $url_entry.Result = "UNKNOWN"
+                    }
 
                 }
                 $url_entry.DateTested = $today_string
 
-                $download_dic | ConvertTo-Json -Depth 3 | Out-File -FilePath $download_metadata_file -Encoding UTF8
+                [PSCustomObject]$download_dic | ConvertTo-Json -Depth 3 | Out-File -FilePath $download_metadata_file -Encoding UTF8
 
             }
         }
 
 
-        if ($local_exists)
-        { 
-            continue
-        }
-
         if ($mode -eq "DOWNLOAD")
         {
-            if (($url_entry.Result -eq "EXISTS") -and (-not $local_exists))
+            if ($local_exists)
+            {
+                Write-Host "Already exists" $outputPath
+                continue
+            }
+            if ($url_entry.Result -eq "EXISTS")
             {
                 #Download the file
                 Invoke-WebRequest -Uri $url -OutFile $outputPath -UseBasicParsing
@@ -137,10 +146,6 @@ foreach ($driver in $drivers) {
             
                 # Sleep for 300 milliseconds after each download
                 Start-Sleep -Milliseconds $timeout_download
-            }
-            else
-            {
-                Write-Host "Already exists" $outputPath
             }
         }
 
