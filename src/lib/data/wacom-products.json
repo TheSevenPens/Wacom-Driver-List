@@ -957,17 +957,6 @@
     ]
   },
   {
-    "name": "Wacom Intuos Pro L BT",
-    "sensorid": "90833914",
-    "model": "PTK870BT",
-    "drivermin": "6.4.9-2",
-    "drivermax": null,
-    "platforms": [
-      "Windows",
-      "MacOS"
-    ]
-  },
-  {
     "name": "Wacom Intuos Pro M",
     "sensorid": "90833911",
     "model": "PTK670",

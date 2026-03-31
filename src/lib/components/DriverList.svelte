@@ -98,24 +98,6 @@
     </div>
 
     <div class="column-item">
-      <p class="section-header">NOTES</p>
-      <hr />
-      <ul>
-        <li>Some driver versions may be missing.</li>
-        <li>Wacom removes downloads for drivers older than about 2021.</li>
-      </ul>
-    </div>
-
-    <div class="column-item">
-      <p class="section-header">MISC</p>
-      <hr />
-      <p><a href="https://github.com/TheSevenPens/Wacom-Driver-List" target="_blank" rel="noreferrer">Github</a></p>
-      <p>
-        <a href="https://docs.thesevenpens.com/drawtab/resources/sevenpens-wacom-driver-list" target="_blank" rel="noreferrer">Docs</a>
-      </p>
-      <p>
-        <a href="https://archive.org/download/wacom-tablet-drivers-for-windows" target="_blank" rel="noreferrer">Drivers at archive.org</a>
-      </p>
       <button onclick={exportJSON}>Export JSON</button>
     </div>
   </div>

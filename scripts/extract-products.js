@@ -80,7 +80,7 @@ function fixModel(model) {
 }
 
 // Models that don't correspond to real tablets — remove these rows
-const removeModels = ['PTK670BT', 'PT470BT', 'PTK-870BT', 'PTK870K022D'];
+const removeModels = ['PT470BT', 'PTK870K022D', 'PTK870BT', 'PTK670BT'];
 
 // Normalize names: remove dashes from model-number prefixes
 const modelPrefixes = ['DTH-', 'DTK-', 'DTU-'];

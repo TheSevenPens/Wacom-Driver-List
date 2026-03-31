@@ -2,18 +2,11 @@
   import { page } from '$app/stores';
   import { base } from '$app/paths';
   import driversData from '$lib/data/wacom-drivers.json';
-  import productsData from '$lib/data/wacom-products.json';
-  import { isVersionInRange } from '$lib/versionUtils.js';
 
   let version = $derived(decodeURIComponent($page.params.version));
 
   let drivers = $derived(
     driversData.filter(d => d.DriverVersion === version)
-  );
-
-  let compatibleProducts = $derived(
-    productsData.filter(p => isVersionInRange(version, p.drivermin, p.drivermax))
-      .sort((a, b) => a.name.localeCompare(b.name))
   );
 </script>
 
@@ -56,34 +49,5 @@
     </table>
   {:else}
     <p>No driver data found for this version.</p>
-  {/if}
-</section>
-
-<section class="card">
-  <h3>Compatible Tablets ({compatibleProducts.length})</h3>
-
-  {#if compatibleProducts.length === 0}
-    <p>No compatible tablets found for this driver version.</p>
-  {:else}
-    <table>
-      <thead>
-        <tr>
-          <th class="table-header">#</th>
-          <th class="table-header">TABLET</th>
-          <th class="table-header">MODEL</th>
-          <th class="table-header">PLATFORMS</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each compatibleProducts as product, index}
-          <tr>
-            <td>{index + 1}</td>
-            <td class="version-value"><a href="{base}/tablets/{encodeURIComponent(product.name)}">{product.name}</a></td>
-            <td>{product.model || '-'}</td>
-            <td>{product.platforms.join(', ')}</td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
   {/if}
 </section>
