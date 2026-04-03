@@ -1,7 +1,7 @@
 <script>
   import { page } from '$app/stores';
   import { base } from '$app/paths';
-  import driversData from '$lib/data/wacom-drivers.json';
+  import driversData from '$lib/data/drivers.js';
 
   let version = $derived(decodeURIComponent($page.params.version));
 

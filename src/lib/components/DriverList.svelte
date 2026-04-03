@@ -1,6 +1,6 @@
 <script>
   import { base } from '$app/paths';
-  import driversData from '$lib/data/wacom-drivers.json';
+  import driversData from '$lib/data/drivers.js';
 
   let osFilter = $state('all');
   let versionFilter = $state('');

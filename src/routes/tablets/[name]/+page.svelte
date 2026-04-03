@@ -1,7 +1,7 @@
 <script>
   import { page } from '$app/stores';
   import { base } from '$app/paths';
-  import driversData from '$lib/data/wacom-drivers.json';
+  import driversData from '$lib/data/drivers.js';
   import productsData from '$lib/data/wacom-products.json';
   import { isVersionInRange } from '$lib/versionUtils.js';
 

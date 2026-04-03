@@ -1,4 +1,4 @@
-import driversData from '$lib/data/wacom-drivers.json';
+import driversData from '$lib/data/drivers.js';
 
 export function entries() {
   const versions = [...new Set(driversData.map(d => d.DriverVersion))];
