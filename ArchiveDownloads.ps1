@@ -33,9 +33,8 @@ if (-not (Test-Path $RootFolder -PathType Container)) {
 }
 
 Write-Host Will store downloads in $RootFolder
-# Load the JSON file
-$jsonFolder = $PSScriptRoot
-$jsonPath = Join-Path $jsonFolder "wacom-drivers.json"
+# Load the JSON file from data-repo submodule
+$jsonPath = Join-Path $PSScriptRoot "data-repo\data\drivers\WACOM-drivers.json"
 if (-not (Test-Path $jsonPath)) {
     Write-Error "JSON file not found at $jsonPath"
     exit 1
@@ -43,7 +42,8 @@ if (-not (Test-Path $jsonPath)) {
 
 # LOAD JSON
 
-$drivers = Get-Content -Path $jsonPath | ConvertFrom-Json
+$data = Get-Content -Path $jsonPath | ConvertFrom-Json
+$drivers = $data.Drivers
 
 # Loop through each driver
 

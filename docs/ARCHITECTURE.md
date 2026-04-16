@@ -5,7 +5,7 @@
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    Data Sources                          │
-│  wacom-drivers.json  |  DrawTabData submodule  |  XML   │
+│       DrawTabData submodule (data-repo/)  |  XML        │
 └───────────┬─────────────────────┬───────────────────────┘
             │                     │
             ▼                     ▼
@@ -55,7 +55,6 @@ Wacom-Driver-List/
 ├── scripts/                      # One-off data extraction scripts
 ├── docs/                         # Project documentation
 ├── dist/                         # Build output
-├── wacom-drivers.json            # Master driver database
 ├── svelte.config.js              # SvelteKit config (static adapter)
 ├── vite.config.js                # Vite config (aliases, plugins)
 └── package.json
@@ -63,28 +62,13 @@ Wacom-Driver-List/
 
 ## Data Layer
 
-### Master Driver Data (`wacom-drivers.json`)
-
-The root-level JSON file contains ~2,400 driver entries. Each entry has this shape:
-
-```json
-{
-  "DriverVersion": "6.3.46-2",
-  "DriverName": "Driver 6.3.46-2 for WINDOWS",
-  "OSFamily": "WINDOWS",
-  "ReleaseDate": "2024-01-15",
-  "DriverUID": "6.3.46-2_WINDOWS",
-  "DriverURLWacom": "https://cdn.wacom.com/...",
-  "DriverURLArchiveDotOrg": "https://archive.org/...",
-  "ReleaseNotesURL": "https://..."
-}
-```
-
-`DriverUID` (version + OS) is the unique key used for merging and deduplication.
-
 ### DrawTabData Submodule (`data-repo/`)
 
-A shared data repository (`TheSevenPens/DrawTabData`) containing JSON datasets for tablets, pens, pen families, brands, and driver compatibility. Mapped as the `$data` alias in both Svelte and Vite configs so components can import from it directly.
+The single source of truth for all driver data. A shared data repository (`TheSevenPens/DrawTabData`) containing JSON datasets for tablets, pens, pen families, brands, and driver compatibility. Mapped as the `$data` alias in both Svelte and Vite configs so components can import from it directly.
+
+The driver data lives at `data-repo/data/drivers/WACOM-drivers.json` in a `{ "Drivers": [...] }` wrapper. Each entry includes metadata fields (`Brand`, `EntityId`, `_id`, `_CreateDate`, `_ModifiedDate`) beyond the core driver fields. `DriverUID` (version + OS) is the unique key.
+
+Scripts for checking and adding new drivers live in the data-repo itself (`data-repo/scripts/`). See `data-repo/docs/UPDATING-DRIVERS.md` for the update process.
 
 **Note:** [DrawTabDataExplorer](https://github.com/TheSevenPens/DrawTabDataExplorer/) also consumes this same submodule. If you encounter data-related issues, cross-check against DrawTabDataExplorer to determine whether the problem is in the shared data or in this project's consumption of it.
 
@@ -94,7 +78,6 @@ A shared data repository (`TheSevenPens/DrawTabData`) containing JSON datasets f
 |--------|---------|
 | `extract-products.js` | Parses Wacom's `update.xml` into `wacom-products.json` |
 | `extract-relnotes-tablets.js` | Extracts tablet model names from release notes HTML |
-| `merge_drivers.js` (root) | CLI tool to merge two driver JSON arrays by `DriverUID` |
 
 These are run manually as maintenance tasks, not during the build.
 
@@ -167,7 +150,6 @@ Triggered on push to `main` or manual dispatch:
 | File | Purpose |
 |------|---------|
 | `ArchiveDownloads.ps1` | PowerShell script for bulk-downloading drivers to local NAS storage |
-| `merge_drivers.js` | Merges driver JSON files, deduplicating by `DriverUID` |
 
 ## External Dependencies
 

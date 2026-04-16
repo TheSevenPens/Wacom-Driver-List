@@ -21,7 +21,7 @@ A static web application that catalogs Wacom tablet drivers across Windows and m
 - **Tablet compatibility** - Maps Wacom products to compatible driver version ranges
 - **Version detail pages** - Per-version view showing all OS variants and downloads
 - **JSON export** - Download filtered results as JSON
-- **JSON merge tool** - Hidden developer utility for merging driver data updates
+- **JSON merge tool** - Hidden developer utility for comparing driver JSON files
 
 ## Pages
 
@@ -45,10 +45,11 @@ A static web application that catalogs Wacom tablet drivers across Windows and m
 
 ## Data Sources
 
-- **wacom-drivers.json** - Master driver database (root-level, 2,400+ entries)
-- **DrawTabData submodule** (`data-repo/`) - Shared dataset covering tablets, pens, drivers, and compatibility
+- **DrawTabData submodule** (`data-repo/`) - Single source of truth for driver data, tablets, pens, and compatibility. Shared with [DrawTabDataExplorer](https://github.com/TheSevenPens/DrawTabDataExplorer/).
 - **Wacom update manifest** - Cached XML from `link.wacom.com/wdc/update.xml`
 - **Archive.org** - Mirror of Wacom driver downloads
+
+Driver update scripts and docs live in the data-repo. See `data-repo/docs/UPDATING-DRIVERS.md`.
 
 ## Running Locally
 
