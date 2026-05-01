@@ -1,5 +1,12 @@
 # Wacom Driver List - Project Overview
 
+> **⚠ Deprecated** — the driver catalog has moved to
+> [DrawTabDataExplorer › Drivers](https://thesevenpens.github.io/DrawTabDataExplorer/drivers).
+> The per-tablet driver-version range from `update.xml` is being
+> ported there next; until that lands this site continues to host the
+> manifest-derived `/tablets` view. Migration tracked in
+> [WORKSTREAMS.md](https://github.com/TheSevenPens/DrawTabDataExplorer/blob/main/docs/WORKSTREAMS.md#merge-consumer-project-wacom-driver-list).
+
 ## What It Is
 
 A static web application that catalogs Wacom tablet drivers across Windows and macOS. It provides searchable, filterable access to over 2,400 driver entries with version history, download links, and tablet compatibility information.
